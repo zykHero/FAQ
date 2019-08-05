@@ -1,14 +1,18 @@
-import { Component, OnInit,ElementRef, HostListener,ViewChild, ɵbypassSanitizationTrustResourceUrl} from '@angular/core';
+import { Component, OnInit,ElementRef, EventEmitter,Output,ViewChild, ɵbypassSanitizationTrustResourceUrl} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import{ TranslateService } from '@ngx-translate/core';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-
+import { NzInputDirective } from 'ng-zorro-antd';
 @Component({
   selector: 'app-my-project',
   templateUrl: './my-project.component.html',
   styleUrls: ['./my-project.component.css']
 })
 export class MyProjectComponent implements OnInit {
+  @Output() afterEdit: EventEmitter<any> = new EventEmitter();
+  editId: string | null;
+  
+  editInputShow:boolean = false;
+  currentClickRowIndex:Number = -1;
   toolbarType:{
     button:'button'
   }
@@ -21,7 +25,8 @@ export class MyProjectComponent implements OnInit {
     }],
     right:[]
   };
-  constructor(public translate :TranslateService,private translateHtml:DomSanitizer) {
+
+  constructor(public translate :TranslateService,private translateHtml:DomSanitizer,private elementRef: ElementRef) {
     
   }
 
@@ -29,6 +34,25 @@ export class MyProjectComponent implements OnInit {
     this.createGridColumns();
     this.getGridData();   
   }
+  startEdit(rowIndex:Number,event: MouseEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    
+    this.currentClickRowIndex = rowIndex;
+  }
+
+  getEditValue(event){
+    console.log(event.target.value)
+  }
+
+  overEdit(rowIndex:Number,event: MouseEvent):void{
+    console.log()
+    this.currentClickRowIndex =-1;
+    //this.afterEdit.emit()
+    //todo 下发数据接口
+
+  }
+
   private getGridData(){
     this.data = [
       {
@@ -73,4 +97,5 @@ export class MyProjectComponent implements OnInit {
       }
     }];
   }
+
 }

@@ -10,7 +10,7 @@ import { NgZorroAntdModule} from 'ng-zorro-antd';
 import { TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ManageProjectsModule } from './manage-projects/manage-projects.module';
-import { CommonModule } from './common/common.module'
+import { PublicModule } from "./common/CommonModule";
 
 
 export function createTranslateHttpLoader(http:HttpClient){
@@ -36,7 +36,7 @@ export function createTranslateHttpLoader(http:HttpClient){
     }),
     NgZorroAntdModule,
     ManageProjectsModule,
-    CommonModule  
+    PublicModule  
   ],
   exports:[TranslateModule,NgZorroAntdModule],
   bootstrap: [AppComponent]

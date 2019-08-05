@@ -27,31 +27,32 @@
 <nz-table #projectList nzBordered [nzData]="data">
   <thead>
     <tr>
-      <th *ngFor="let i of columns"
-        [ngStyle]="{'width':i.width ? i.width : '20%',
-                  'text-align':i.textAlign ? i.textAlign :'left'}">
+      <th *ngFor="let i of columns"[ngStyle]="{'width':i.width ? i.width : '20%','text-align':i.textAlign ? i.textAlign :'left'}">
           {{i.title}}
       </th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of projectList.data" class="editable-row">
-      <ng-container *ngFor="let col of columns;let i=index">
-          <!-- 可编辑单元 -->
-          <td *ngIf="col.isEdit">
-              <div class="editable-cell">
-                  <!-- 显示dom -->
-                  <div class="editable-cell-value-wrap" (click)="startEdit(data.id, $event)" 
-                  [innerHTML]="col.render?col.render(item[col.key],col.key,i,item):item[col.key]"></div>
-                  <!-- 编辑输入框 todo 可以扩展为下拉框 -->
-                  <ng-template #editTpl>
-                      <input type="text" nz-input  />
-                  </ng-template>
-              </div>
-          </td>
-          <!-- 非可编辑单元 -->
-          <td *ngIf="!col.isEdit" [innerHTML]="col.render?col.render(item[col.key],col.key,i,item):item[col.key]"></td>
-      </ng-container>
-    </tr>
+    <ng-container *ngFor="let item of projectList.data;let i=index">
+        <tr class="editable-row" [id]='i'>
+            <ng-container *ngFor="let col of columns;">
+                <!-- 可编辑单元 -->
+                <td *ngIf="col.isEdit">
+                    <div class="editable-cell">
+                        <!-- 显示dom -->
+                        <div *ngIf="currentClickRowIndex != i; else editTpl" class="editable-cell-value-wrap" (click)="startEdit(i,$event)" 
+                        [innerHTML]="col.render?col.render(item[col.key],col.key,i,item):item[col.key]"></div>
+                        
+                        <ng-template #editTpl>
+                          <!-- 编辑输入框 todo 可以扩展为下拉框 -->
+                          <input id="editInput" appNgAutoFocus type="text" nz-input (input)="getEditValue($event)" [(ngModel)]="col.render?col.render(item[col.key],col.key,i,item):item[col.key]" (blur)="overEdit(i,$event)" />
+                        </ng-template>             
+                    </div>
+                </td>
+                <!-- 非可编辑单元 -->
+                <td *ngIf="!col.isEdit" [innerHTML]="col.render?col.render(item[col.key],col.key,i,item):item[col.key]"></td>    
+            </ng-container>
+          </tr>
+    </ng-container>
   </tbody>
 </nz-table>
