@@ -5,10 +5,9 @@ import {MyProjectComponent} from './manage-projects/my-project/my-project.compon
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/myProject' },
-  { path:'myProject', component:MyProjectComponent},
   { 
-    path: 'projectManager',
-    loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) 
+    path: 'myProject',
+    loadChildren: () => import('./manage-projects/manage-projects.module').then(m => m.ManageProjectsModule) 
   }
 ];
 
