@@ -2,6 +2,7 @@ import { Component, OnInit,ElementRef, EventEmitter,Output,ViewChild, ɵbypassSa
 import { DomSanitizer } from '@angular/platform-browser';
 import{ TranslateService } from '@ngx-translate/core';
 import { NzInputDirective } from 'ng-zorro-antd';
+
 @Component({
   selector: 'app-my-project',
   templateUrl: './my-project.component.html',
@@ -97,5 +98,4 @@ export class MyProjectComponent implements OnInit {
       }
     }];
   }
-
 }
