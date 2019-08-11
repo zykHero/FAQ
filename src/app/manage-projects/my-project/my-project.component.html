@@ -5,7 +5,7 @@
         <li [ngSwitch]="leftElem.type">
           <!-- button -->
           <ng-container *ngSwitchCase="'button'">
-            <button nz-button nzType="primary">
+            <button nz-button nzType="primary" (click)="leftElem.callback()">
               {{leftElem.title}}
             </button>
           </ng-container>

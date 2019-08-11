@@ -22,7 +22,10 @@ export class MyProjectComponent implements OnInit {
   toolbar:any={
     left:[{
       type:"button",      
-      title:"新建"
+      title:"新建",
+      callback:()=>{
+        console.log("zyk")
+      }
     }],
     right:[]
   };
@@ -47,7 +50,7 @@ export class MyProjectComponent implements OnInit {
   }
 
   overEdit(rowIndex:Number,event: MouseEvent):void{
-    console.log()
+    console.log("")
     this.currentClickRowIndex =-1;
     //this.afterEdit.emit()
     //todo 下发数据接口
