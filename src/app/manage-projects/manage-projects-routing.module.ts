@@ -7,10 +7,12 @@ import { AddProjectComponent} from './my-project/createNewProject/add-project/ad
 const routes: Routes = [
   { 
     path:"",
-    component: MyProjectComponent,
     children:[{
+      path:"",
+      component:MyProjectComponent
+    },{
       path:'createProject',
-      component:AddProjectComponent,
+      component:AddProjectComponent
     }]
   }
   ,{

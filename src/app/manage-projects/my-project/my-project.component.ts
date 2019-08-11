@@ -2,7 +2,7 @@ import { Component, OnInit,ElementRef, EventEmitter,Output,ViewChild, ɵbypassSa
 import { DomSanitizer } from '@angular/platform-browser';
 import{ TranslateService } from '@ngx-translate/core';
 import { NzInputDirective } from 'ng-zorro-antd';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-my-project',
   templateUrl: './my-project.component.html',
@@ -24,13 +24,14 @@ export class MyProjectComponent implements OnInit {
       type:"button",      
       title:"新建",
       callback:()=>{
-        console.log("zyk")
+        this.router.navigate(['/myProject/createProject']);
       }
     }],
     right:[]
   };
 
-  constructor(public translate :TranslateService,private translateHtml:DomSanitizer,private elementRef: ElementRef) {
+  constructor(public translate :TranslateService,private translateHtml:DomSanitizer,private elementRef: ElementRef,
+    private router:Router) {
     
   }
 
