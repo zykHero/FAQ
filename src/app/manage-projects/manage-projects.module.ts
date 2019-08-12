@@ -7,13 +7,13 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { FormsModule } from '@angular/forms';
 import {PublicModule} from '../common/CommonModule'
 import {ManageProjectRoutingModule} from './manage-projects-routing.module'
-
+import { NzStepsModule } from 'ng-zorro-antd/steps';
 @NgModule({
   declarations: [MyProjectComponent, AddProjectComponent],
   imports: [
     CommonModule,
     NzTableModule,
-    NzButtonModule,FormsModule,PublicModule,ManageProjectRoutingModule
+    NzButtonModule,FormsModule,PublicModule,ManageProjectRoutingModule,NzStepsModule
   ]
 })
 export class ManageProjectsModule { }

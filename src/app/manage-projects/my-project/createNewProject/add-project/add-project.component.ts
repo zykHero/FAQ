@@ -8,7 +8,7 @@ import{ TranslateService } from '@ngx-translate/core';
   styleUrls: ['./add-project.component.css']
 })
 export class AddProjectComponent implements OnInit {
-
+  current = 0;
   constructor(public translate:TranslateService ) { }
 
   ngOnInit() {
