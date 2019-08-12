@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import{ TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-add-project',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddProjectComponent implements OnInit {
 
-  constructor() { }
+  constructor(public translate:TranslateService ) { }
 
   ngOnInit() {
   }

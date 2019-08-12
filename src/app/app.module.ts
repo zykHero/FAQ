@@ -12,7 +12,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ManageProjectsModule } from './manage-projects/manage-projects.module';
 import { PublicModule } from "./common/CommonModule";
 
-
 export function createTranslateHttpLoader(http:HttpClient){
   return new TranslateHttpLoader(http,'../assets/lang/','.json');
 }
@@ -36,7 +35,8 @@ export function createTranslateHttpLoader(http:HttpClient){
     }),
     NgZorroAntdModule,
     ManageProjectsModule,
-    PublicModule  
+    PublicModule,
+    
   ],
   exports:[TranslateModule,NgZorroAntdModule],
   bootstrap: [AppComponent]
