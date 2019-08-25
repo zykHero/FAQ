@@ -19,14 +19,9 @@ export class MyProjectComponent implements OnInit {
   }
   columns:any[]=[];
   data:any[] = [];
+  addBtnTitle:string = "";
   toolbar:any={
-    left:[{
-      type:"button",      
-      title:"新建",
-      callback:()=>{
-        this.router.navigate(['/myProject/createProject']);
-      }
-    }],
+    left:[],
     right:[]
   };
 
@@ -36,7 +31,12 @@ export class MyProjectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.createGridColumns();
+    
+    setTimeout(()=>{
+      this.createGridToolbar();
+      this.createGridColumns();
+    })
+   
     this.getGridData();   
   }
   startEdit(rowIndex:Number,event: MouseEvent): void {
@@ -57,7 +57,6 @@ export class MyProjectComponent implements OnInit {
     //todo 下发数据接口
 
   }
-
   private getGridData(){
     this.data = [
       {
@@ -72,6 +71,18 @@ export class MyProjectComponent implements OnInit {
         editTime:"3"
       }
     ]
+  }
+  private createGridToolbar(){ 
+    this.toolbar = {
+      left:[{
+        type:"button",      
+        title:this.translate.instant('public.add'),
+        callback:()=>{
+          this.router.navigate(['/myProject/createProject']);
+        }
+      }],
+      right:[]
+    };
   }
   private createGridColumns(){
     this.columns=[{

@@ -9,9 +9,14 @@ import{ TranslateService } from '@ngx-translate/core';
 })
 export class AddProjectComponent implements OnInit {
   current = 0;
+  firstTitle:string = this.translate.instant('project.createFAQ');
+  secondTitle:string = this.translate.instant('project.publishFAQ');
+  thirdTitle:string = this.translate.instant('project.reportFAQ');
+
   constructor(public translate:TranslateService ) { }
 
   ngOnInit() {
+    console.log(this.firstTitle)
   }
 
 }

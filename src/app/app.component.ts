@@ -9,6 +9,14 @@ import{ TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   isCollapsed = false;
   constructor(public translate:TranslateService){
-      this.translate.use('zh');
+    translate.addLangs(['zh', 'en']);
+    translate.setDefaultLang('zh'); 
+    this.translate.use('zh');
+  }
+  useEnglish() {
+    this.translate.use('en');
+  }
+  useChinese() {
+    this.translate.use('zh');
   }
 }

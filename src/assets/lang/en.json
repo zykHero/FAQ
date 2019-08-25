@@ -1,3 +1,22 @@
 {
-    "name":"zyk"
+    "sysTitle":"FAQ",
+    "managerProject":"managerProject",
+    "public":{
+        "delete":"Delete",
+        "publish":"Publish",
+        "add": "Add"
+    },
+    "menu":{
+        "myProject":"myProject"
+    },
+    "project":{
+        "title":"Title",
+        "createTime":"CreateTime",
+        "editTime":"EditTime",
+        "operation":"Operation",
+        "createFAQ":"EditProject",
+        "publishFAQ":"PublishProject",
+        "reportFAQ":"CreateReport"
+
+    }
 }

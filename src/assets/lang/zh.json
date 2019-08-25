@@ -1,17 +1,22 @@
 {
-    "sysTitle":"问卷库",
-    "managerProject":"项目管理",
-    "public":{
-        "delete":"删除",
-        "publish":"发布"
+    "sysTitle": "问卷库",
+    "managerProject": "项目管理",
+    "add": "新建",
+    "public": {
+        "delete": "删除",
+        "publish": "发布",
+        "add": "新建"
     },
-    "menu":{
-        "myProject":"我的项目"
+    "menu": {
+        "myProject": "我的项目"
     },
-    "project":{
-        "title":"标题",
-        "createTime":"创建时间",
-        "editTime":"编辑时间",
-        "operation":"操作"
+    "project": {
+        "title": "标题",
+        "createTime": "创建时间",
+        "editTime": "编辑时间",
+        "operation": "操作",
+        "createFAQ": "编辑项目",
+        "publishFAQ": "发布项目",
+        "reportFAQ": "统计报表"
     }
 }
