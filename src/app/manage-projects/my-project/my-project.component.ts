@@ -78,7 +78,7 @@ export class MyProjectComponent implements OnInit {
         type:"button",      
         title:this.translate.instant('public.add'),
         callback:()=>{
-          this.router.navigate(['/myProject/createProject']);
+          this.router.navigate(['myProject/createProject']);
         }
       }],
       right:[]
