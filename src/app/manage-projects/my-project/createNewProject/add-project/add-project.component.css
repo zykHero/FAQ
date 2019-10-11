@@ -1,3 +1,4 @@
+
 .addProject{
     position: absolute;
     left: 0;
@@ -5,38 +6,65 @@
     z-index:100;
     width:100%;
     height:100%;
-    background-color: aliceblue;
+    background-color: #f0f2f5;
 }
-:host {
+
+.addProject_header {
+  display: flex;
+  justify-content: flex-end;
+  background: #fff;
+  width:100%;
+  height: 64px;
+}
+.addProject_backTo {
+  width: 10%;
+}
+.addProject_step {
+  width: 75%;
+  position: relative;
+  top:15px;
+}
+.addProject_userInfo {
+  display: flex;
+  width: 15%;
+}
+.addProject_backTo, .addProject_userInfo {
+  line-height: 64px;
+}
+nz-header,nz-content,nz-footer {
+  background: #fff;
+}
+
+.addProject_menu {
+  width: 70px;
+  height: 100%;
+  overflow: auto;
+  background-color: #fff;
+  position: fixed;
+  top: 75px;
+  left: 0;
+  z-index: 99;
   text-align: center;
+  border-right: 1px solid #d8d8d8;
 }
 
-nz-header,nz-footer {
-  background: #7dbcea;
-  color: #fff;
+.addProject_menu_child{
+  width: 300px;
+  height: 100%;
+  background-color: #ffffff;
+  position: fixed;
+  top: 75px;
+  left: 72px;
+  overflow: auto;
+  z-index: 99;
+  border-right: 1px solid #e8e8e8;
+  padding: 20px 0px 80px 12px;
 }
 
-nz-footer {
-  line-height: 1.5;
+.addProject_config{
+  padding-left: 380px;
+  background-color: #ffffff;
 }
-
-nz-sider {
-  background: #3ba0e9;
-  color: #fff;
-  line-height: 50px;
-}
-
-nz-content {
-  background: rgba(16, 142, 233, 1);
-  color: #fff;
-  min-height: 120px;
-  /* line-height: 120px; */
-}
-
 nz-layout {
-  margin-bottom: 48px;
-}
-
-nz-layout:last-child {
-  margin: 0;
+  margin: 10px 0;
 }

@@ -13,7 +13,23 @@ export class AddProjectComponent implements OnInit {
   secondTitle: string = this.translate.instant('project.publishFAQ');
   thirdTitle: string = this.translate.instant('project.reportFAQ');
   projectName: string ='';
-
+  menu:any = [
+    {
+      id: 'questionType',
+      title: '题型',
+      icon: ''
+    },
+    {
+      id: 'questionBank',
+      title: '题库',
+      icon: ''
+    },{
+      id: 'appearance',
+      title: '外观',
+      icon: ''
+    }
+  ]
+  currentMenu:any= this.menu[0]['id'];
   constructor(public translate: TranslateService) { }
 
   ngOnInit() {
@@ -39,8 +55,12 @@ export class AddProjectComponent implements OnInit {
   }
 
 
+  private changeContent() {
 
-  private changeContent(){
+  }
 
+  changeMenu($event,id){
+    console.log(id)
+    this.currentMenu = id;
   }
 }
