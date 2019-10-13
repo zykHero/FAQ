@@ -28,7 +28,54 @@ export class AddProjectComponent implements OnInit {
       title: '外观',
       icon: ''
     }
-  ]
+  ];
+  toolbar: any = [{
+    id: 'questionType',
+    items: [{
+      title: '选择题',
+      children:[{
+        id: 'radio',
+        icon:'',
+        title: '单选题'
+      },{
+        id: 'multiple',
+        icon:'',
+        title: '多选题'
+      },{
+        id: 'imageSelected',
+        icon:'',
+        title: '图片选择'
+      },{
+        id: 'imageVote',
+        icon:'',
+        title: '图片投票'
+      },{
+        id: 'textVote',
+        icon:'',
+        title: '文字投票'
+      },{
+        id: 'comboBox',
+        icon:'',
+        title: '下拉框'
+      },{
+        id: 'uplink',
+        icon:'',
+        title: '级联题'
+      },{
+        id: 'classify',
+        icon:'',
+        title: '分类题'
+      },{
+        id: 'scale',
+        icon:'',
+        title: '量表题'
+      }]
+    }]
+  },{
+    id: 'questionBank',
+    items:[{}]
+  }]
+
   currentMenu:any= this.menu[0]['id'];
   constructor(public translate: TranslateService) { }
 
@@ -51,7 +98,7 @@ export class AddProjectComponent implements OnInit {
   }
 
   onBack(){
-    
+    console.log('返回')
   }
 
 

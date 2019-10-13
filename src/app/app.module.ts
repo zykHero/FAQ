@@ -35,8 +35,7 @@ export function createTranslateHttpLoader(http:HttpClient){
     }),
     NgZorroAntdModule,
     ManageProjectsModule,
-    PublicModule,
-    
+    PublicModule
   ],
   exports:[TranslateModule,NgZorroAntdModule],
   bootstrap: [AppComponent]

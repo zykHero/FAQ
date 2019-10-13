@@ -1,6 +1,7 @@
 {
     "sysTitle":"FAQ",
     "managerProject":"managerProject",
+    "backTo": "Return",
     "public":{
         "delete":"Delete",
         "publish":"Publish",

@@ -10,12 +10,14 @@ import {ManageProjectRoutingModule} from './manage-projects-routing.module'
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 @NgModule({
   declarations: [MyProjectComponent, AddProjectComponent],
   imports: [
     CommonModule,
     NzTableModule,
-    NzButtonModule,FormsModule,PublicModule,ManageProjectRoutingModule,NzStepsModule,NzPageHeaderModule,
+    NzButtonModule,FormsModule,PublicModule,ManageProjectRoutingModule,
+    NzStepsModule,NzPageHeaderModule,NzIconModule,
     NzLayoutModule
   ]
 })

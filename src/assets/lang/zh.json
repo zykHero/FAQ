@@ -2,6 +2,7 @@
     "sysTitle": "问卷库",
     "managerProject": "项目管理",
     "add": "新建",
+    "backTo": "返回",
     "public": {
         "delete": "删除",
         "publish": "发布",

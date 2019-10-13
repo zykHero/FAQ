@@ -1,14 +1,14 @@
 <div class="addProject">
     <div class="addProject_header">
         <div class="addProject_backTo">
-            <span>返回</span>
+            <i nz-icon nzType="backward" nzTheme="outline" (click)="onBack()"></i>
         </div>  
         <div class="addProject_step">
-                <nz-steps [nzCurrent]="current">
-                        <nz-step [nzTitle]="firstTitle"></nz-step>
-                        <nz-step [nzTitle]="secondTitle"></nz-step>
-                        <nz-step [nzTitle]="thirdTitle"></nz-step>
-                </nz-steps>
+            <nz-steps [nzCurrent]="current">
+                    <nz-step [nzTitle]="firstTitle"></nz-step>
+                    <nz-step [nzTitle]="secondTitle"></nz-step>
+                    <nz-step [nzTitle]="thirdTitle"></nz-step>
+            </nz-steps>
         </div>
         <div class="addProject_userInfo"></div>
     </div>
@@ -21,11 +21,24 @@
         <ng-container>
             <div class="addProject_menu_child">
                 <!-- 工具栏 -->
+                <ng-container *ngFor="let item of toolbar">
+                    <ul [id]="item['id']" *ngIf="item['id'] === currentMenu">
+                        <li *ngFor="let child of item['items']">
+                            <label>{{ child['title'] }}</label>
+                            <div class="example_module">
+                                <ng-container *ngFor="let childItem of child['children']">
+                                    <div class="example_module_child" [id]="childItem['id']">
+                                        {{childItem['title']}}
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </li>
+                    </ul>
+                </ng-container>
             </div> 
         </ng-container>
-        <!-- 题库 -->
-        <div class="addProject_config" *ngIf="currentMenu == menu[0]['id']">
-            
+        <!-- 题型/题库 -->
+        <div class="addProject_config" *ngIf="currentMenu == menu[0]['id']">       
             <div class="steps-content">zyk</div>
             <div class="steps-buttons">
                 <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
@@ -38,6 +51,7 @@
                     <span>完成</span>
                 </button>
             </div>
-        </div> 
+        </div>
+        <!-- 外观 -->
     </nz-layout>   
 </div>
