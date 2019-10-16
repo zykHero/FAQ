@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-add-project',
   templateUrl: './add-project.component.html',
   styleUrls: ['./add-project.component.css']
 })
-export class AddProjectComponent implements OnInit {
+export class AddProjectComponent implements OnInit,OnDestroy {
   current = 0;
   firstTitle: string = this.translate.instant('project.createFAQ');
   secondTitle: string = this.translate.instant('project.publishFAQ');
   thirdTitle: string = this.translate.instant('project.reportFAQ');
   projectName: string ='';
+  isTitleFocus: boolean = false;
   menu:any = [
     {
       id: 'questionType',
@@ -70,6 +71,45 @@ export class AddProjectComponent implements OnInit {
         icon:'',
         title: '量表题'
       }]
+    }
+    ,{
+      title:'填空题',
+      children:[{
+        id: 'gapFilling',
+        icon:'',
+        title: '填空题'
+      },{
+        id: 'multipleGapFilling',
+        icon:'',
+        title: '多项填空'
+      },{
+        id: 'linkGapFilling',
+        icon:'',
+        title: '连续填空'
+      },{
+        id: 'table',
+        icon:'',
+        title: '表格'
+      }]
+    },{
+      title:'打分排序',
+      children:[{
+        id: 'evaluate',
+        icon:'',
+        title: '评价题'
+      },{
+        id: 'mark',
+        icon:'',
+        title: '打分题'
+      },{
+        id: 'sort',
+        icon:'',
+        title: '排序题'
+      },{
+        id: 'proportion',
+        icon:'',
+        title: '比重题'
+      }]
     }]
   },{
     id: 'questionBank',
@@ -77,12 +117,16 @@ export class AddProjectComponent implements OnInit {
   }]
 
   currentMenu:any= this.menu[0]['id'];
-  constructor(public translate: TranslateService) { }
+  constructor(public translate: TranslateService,private router: Router) { }
 
   ngOnInit() {
     console.log(this.firstTitle)
   }
   
+  ngOnDestroy(){
+    console.log("离开")
+  }
+
   pre() {
     this.current -= 1;
     this.changeContent()
@@ -98,6 +142,7 @@ export class AddProjectComponent implements OnInit {
   }
 
   onBack(){
+    this.router.navigate(['myProject'])
     console.log('返回')
   }
 
@@ -107,7 +152,7 @@ export class AddProjectComponent implements OnInit {
   }
 
   changeMenu($event,id){
-    console.log(id)
     this.currentMenu = id;
   }
+
 }

@@ -24,7 +24,7 @@
                 <ng-container *ngFor="let item of toolbar">
                     <ul [id]="item['id']" *ngIf="item['id'] === currentMenu">
                         <li *ngFor="let child of item['items']">
-                            <label>{{ child['title'] }}</label>
+                            <label>{{child['title']}}</label>
                             <div class="example_module">
                                 <ng-container *ngFor="let childItem of child['children']">
                                     <div class="example_module_child" [id]="childItem['id']">
@@ -39,7 +39,19 @@
         </ng-container>
         <!-- 题型/题库 -->
         <div class="addProject_config" *ngIf="currentMenu == menu[0]['id']">       
-            <div class="steps-content">zyk</div>
+            <div class="steps-content">
+                <!-- 标题 -->
+                <div class="templateTitle">
+                    <div class="mainTitle">
+                        <input [ngClass]="{'titleFocus':isTitleFocus}" placeholder="问卷标题">
+                    </div>
+                    <div class="subheading">
+                        <input [ngClass]="{'titleFocus':isTitleFocus}" placeholder="感谢您能抽出几分钟时间来参加本次答题，现在我们就马上开始吧！">
+                    </div>
+                </div>
+                <!-- 拖入区域 -->
+                <!-- 发布 -->
+            </div>
             <div class="steps-buttons">
                 <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
                     <span>前一步</span>

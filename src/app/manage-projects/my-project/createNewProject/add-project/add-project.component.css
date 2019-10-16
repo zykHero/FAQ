@@ -55,6 +55,7 @@ nz-header,nz-content,nz-footer {
   height: 60px;
   line-height: 60px;
 }
+
 .addProject_menu_child{
   width: 300px;
   height: 100%;
@@ -66,6 +67,12 @@ nz-header,nz-content,nz-footer {
   z-index: 99;
   border-right: 1px solid #e8e8e8;
   padding: 20px 0px 80px 12px;
+}
+.addProject_menu_child ul li{
+  margin-bottom: 15px;
+}
+.addProject_menu_child ul li label {
+  margin-left: 5px;
 }
 .example_module {
   display: -webkit-flex; 
@@ -81,10 +88,15 @@ nz-header,nz-content,nz-footer {
   line-height: 40px;
   margin:5px 0 0 5px;
 }
+.example_module_child:hover {
+  border: 2px solid #2672ff;
+  
+}
 .addProject_config{
   padding-left: 380px;
-  background-color: #ffffff;
+  background-color: #f0f2f5;
 }
+
 nz-layout {
   margin: 10px 0;
 }
@@ -95,6 +107,39 @@ nz-layout {
   position: relative;
   left: 25px;
 }
+
 [nz-icon]:hover{
   cursor: pointer;
+}
+
+.templateTitle {
+  width: 90%;
+  height: 170px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+  
+}
+.mainTitle input {
+  font-size: 20px;
+}
+
+.subheading input {
+  font-size: 16px;
+  margin-top: 0;
+}
+
+.mainTitle input,.subheading input {
+  border: 0 ;
+  background-color: #ffffff;
+  width: 95%;
+  margin: 20px;
+  padding: 10px 20px;
+  outline-color: transparent;
+}
+
+.mainTitle input:hover {
+  border: 1px dashed;
+}
+.subheading input:hover {
+  border: 1px dashed;
 }
