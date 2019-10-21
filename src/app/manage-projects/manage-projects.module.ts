@@ -11,8 +11,9 @@ import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { QuestionTemplateComponent } from './my-project/createNewProject/question-template/question-template.component';
 @NgModule({
-  declarations: [MyProjectComponent, AddProjectComponent],
+  declarations: [MyProjectComponent, AddProjectComponent, QuestionTemplateComponent],
   imports: [
     CommonModule,
     NzTableModule,

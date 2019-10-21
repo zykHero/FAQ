@@ -1,6 +1,8 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit,OnDestroy,ViewChild,ViewContainerRef, 
+  ComponentFactoryResolver,ComponentRef, ComponentFactory} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router'
+import { QuestionTemplateComponent } from '../question-template/question-template.component';
 
 @Component({
   selector: 'app-add-project',
@@ -114,10 +116,17 @@ export class AddProjectComponent implements OnInit,OnDestroy {
   },{
     id: 'questionBank',
     items:[{}]
-  }]
-
+  }];
   currentMenu:any= this.menu[0]['id'];
-  constructor(public translate: TranslateService,private router: Router) { }
+  @ViewChild('questionTemplate', { read: ViewContainerRef,static:true })questionTemplate:ViewContainerRef;
+  componentRef: ComponentRef<QuestionTemplateComponent>;
+  
+  constructor(public translate: TranslateService,private router: Router,
+    private resolver: ComponentFactoryResolver) {
+      const factory: ComponentFactory<QuestionTemplateComponent> = this.resolver.resolveComponentFactory(QuestionTemplateComponent);
+      this.componentRef = this.questionTemplate.createComponent(factory);
+
+    }
 
   ngOnInit() {
     console.log(this.firstTitle)
