@@ -20,6 +20,7 @@ import { QuestionTemplateComponent } from './my-project/createNewProject/questio
     NzButtonModule,FormsModule,PublicModule,ManageProjectRoutingModule,
     NzStepsModule,NzPageHeaderModule,NzIconModule,
     NzLayoutModule
-  ]
+  ],
+  entryComponents:[QuestionTemplateComponent]
 })
 export class ManageProjectsModule { }

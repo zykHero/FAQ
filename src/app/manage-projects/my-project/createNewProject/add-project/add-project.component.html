@@ -12,7 +12,7 @@
         </div>
         <div class="addProject_userInfo"></div>
     </div>
-    <nz-layout>
+    <div class="addProject_body">
         <div class="addProject_menu">
             <ul *ngFor="let item of menu">
                 <li (click)="changeMenu($event,item['id'])">{{item['title']}}</li>
@@ -27,7 +27,7 @@
                             <label>{{child['title']}}</label>
                             <div class="example_module">
                                 <ng-container *ngFor="let childItem of child['children']">
-                                    <div class="example_module_child" [id]="childItem['id']">
+                                    <div class="example_module_child" [id]="childItem['id']" (click)="addTemplate(childItem['id'])">
                                         {{childItem['title']}}
                                     </div>
                                 </ng-container>
@@ -50,9 +50,9 @@
                     </div>
                 </div>
                 <!-- 题目区域 -->
-                <template #questionTemplate>
+                <div #questionTemplate>
 
-                </template>
+                </div>
                 <!-- 发布 -->
             </div>
             <div class="steps-buttons">
@@ -68,5 +68,5 @@
             </div>
         </div>
         <!-- 外观 -->
-    </nz-layout>   
+    </div>   
 </div>

@@ -1,1 +1,58 @@
 <p>question-template works!</p>
+<div class="questionBoard" *ngIf="questionType==='radio'">
+    <!-- title -->
+    <label>{{questionIndex}}</label>
+    <input type="text">
+    <div class="toolbar"></div>
+</div>
+<div class="questionBoard" [ngSwitch]="questionType">
+    <!-- 单选题 -->
+    <div *ngSwitchCase='radio'>
+        <!-- title -->
+        <div>
+            <label>{{questionIndex}}</label>
+            <input type="text">
+            <div class="toolbar"></div>
+        </div>
+    </div>
+     <!-- 多选题 -->
+     <div *ngSwitchCase='multiple'>
+        <!-- title -->
+        <div>
+            <label>{{questionIndex}}</label>
+            <input type="text">
+            <div class="toolbar"></div>
+        </div>
+    </div>
+    <!-- 图片选择 -->
+    <div *ngSwitchCase='imageSelected'>
+
+    </div>
+    <!-- 图片投票 -->
+    <div *ngSwitchCase='imageVote'>
+
+    </div>
+    <!-- 文字投票 -->
+    <div *ngSwitchCase='textVote'>
+
+    </div>
+    <!-- 下拉框 -->
+    <div *ngSwitchCase='comboBox'>
+
+    </div>
+    <!-- 级联题 -->
+    <div *ngSwitchCase='uplink'>
+
+    </div>
+    <!-- 分类题 -->
+    <div *ngSwitchCase='classify'>
+
+    </div>
+    <!-- 量表题 -->
+    <div *ngSwitchCase='scale'>
+
+    </div>
+    <div **ngSwitchDefault>
+        123
+    </div>
+</div> 

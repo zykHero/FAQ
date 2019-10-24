@@ -1,5 +1,5 @@
 import { Component, OnInit,OnDestroy,ViewChild,ViewContainerRef, 
-  ComponentFactoryResolver,ComponentRef, ComponentFactory} from '@angular/core';
+  ComponentFactoryResolver,ComponentRef} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router'
 import { QuestionTemplateComponent } from '../question-template/question-template.component';
@@ -118,14 +118,15 @@ export class AddProjectComponent implements OnInit,OnDestroy {
     items:[{}]
   }];
   currentMenu:any= this.menu[0]['id'];
-  @ViewChild('questionTemplate', { read: ViewContainerRef,static:true })questionTemplate:ViewContainerRef;
+  questionBoxNum:number=0;
+  //目前需要创建组件视图，进行增、删、插入，所以使用ViewContainerRef
+  @ViewChild('questionTemplate', { read: ViewContainerRef,static:false })
+  questionTemplate:ViewContainerRef;
   componentRef: ComponentRef<QuestionTemplateComponent>;
   
   constructor(public translate: TranslateService,private router: Router,
-    private resolver: ComponentFactoryResolver) {
-      const factory: ComponentFactory<QuestionTemplateComponent> = this.resolver.resolveComponentFactory(QuestionTemplateComponent);
-      this.componentRef = this.questionTemplate.createComponent(factory);
-
+    private ComponentFactoryResolver: ComponentFactoryResolver) {
+  
     }
 
   ngOnInit() {
@@ -155,13 +156,20 @@ export class AddProjectComponent implements OnInit,OnDestroy {
     console.log('返回')
   }
 
+  changeMenu($event,id){
+    this.currentMenu = id;
+  }
 
-  private changeContent() {
+  addTemplate(type){
+    const factory = this.ComponentFactoryResolver.resolveComponentFactory(QuestionTemplateComponent);
+    const componentRef = this.questionTemplate.createComponent(factory);
+    this.questionBoxNum++;
+    componentRef.instance.showQusetionType(type,this.questionBoxNum);
 
   }
 
-  changeMenu($event,id){
-    this.currentMenu = id;
+  private changeContent(){
+
   }
 
 }

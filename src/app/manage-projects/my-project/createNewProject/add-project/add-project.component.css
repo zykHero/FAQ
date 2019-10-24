@@ -37,16 +37,18 @@ ul {
 nz-header,nz-content,nz-footer {
   background: #fff;
 }
-
+.addProject_body{
+  display: flex;
+  width: 100%;
+  height: 580px;
+  position: relative;
+  top:10px;
+}
 .addProject_menu {
   width: 70px;
   height: 100%;
-  overflow: auto;
+  min-height: 580px;
   background-color: #fff;
-  position: fixed;
-  top: 75px;
-  left: 0;
-  z-index: 99;
   text-align: center;
   border-right: 1px solid #d8d8d8;
 }
@@ -57,14 +59,10 @@ nz-header,nz-content,nz-footer {
 }
 
 .addProject_menu_child{
-  width: 300px;
+  width: 450px;
   height: 100%;
   background-color: #ffffff;
-  position: fixed;
-  top: 75px;
-  left: 72px;
-  overflow: auto;
-  z-index: 99;
+  overflow-y: auto;
   border-right: 1px solid #e8e8e8;
   padding: 20px 0px 80px 12px;
 }
@@ -93,13 +91,12 @@ nz-header,nz-content,nz-footer {
   
 }
 .addProject_config{
-  padding-left: 380px;
+  width: 100%;
+  height: 580px;
+  overflow-y: scroll;
   background-color: #f0f2f5;
 }
 
-nz-layout {
-  margin: 10px 0;
-}
 
 [nz-icon] {
   margin-right: 6px;
