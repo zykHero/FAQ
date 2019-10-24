@@ -8,6 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class QuestionTemplateComponent implements OnInit {
   questionType:string = '';
   questionIndex:number = 0;
+  questionGrout: any = [{
+    id: '',
+    content: [{
+      
+    },{
+
+    }]
+  }]
   constructor() { }
 
   ngOnInit() {

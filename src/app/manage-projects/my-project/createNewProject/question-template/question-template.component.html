@@ -1,9 +1,19 @@
 <p>question-template works!</p>
-<div class="questionBoard" *ngIf="questionType==='radio'">
+<div class="question-board" *ngIf="questionType==='radio'">
     <!-- title -->
-    <label>{{questionIndex}}</label>
-    <input type="text">
-    <div class="toolbar"></div>
+    <div class="question-toolbar">
+        <label>{{questionIndex}}</label>
+        <input class="" type="text">
+        <div class="question-toolbar-group">
+            <div>长按拖动题目</div>
+            <div>逻辑设置</div>
+            <div>复制题目</div>
+            <div>删除题目</div>
+        </div>
+    </div>  
+    <div class="question-area">
+        
+    </div>
 </div>
 <div class="questionBoard" [ngSwitch]="questionType">
     <!-- 单选题 -->
