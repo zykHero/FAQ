@@ -5,14 +5,17 @@
         <label>{{questionIndex}}</label>
         <input class="" type="text">
         <div class="question-toolbar-group">
-            <div>长按拖动题目</div>
-            <div>逻辑设置</div>
-            <div>复制题目</div>
-            <div>删除题目</div>
+            <!-- todo 长按拖动题目 -->
+            <!-- todo 逻辑设置 -->
+            <i class="toolbar-icon" nz-icon nzType="copy" nzTheme="fill"></i>
+            <i class="toolbar-icon" nz-icon nzType="delete" nzTheme="fill"></i>
         </div>
+        
+        <i class="toolbar-icon" nz-icon nzType="close-circle" nzTheme="fill"></i>
+        
     </div>  
     <div class="question-area">
-        
+        <app-radion-grop></app-radion-grop>
     </div>
 </div>
 <div class="questionBoard" [ngSwitch]="questionType">

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { RadionGropComponent } from '../radion-grop/radion-grop.component';
 @Component({
   selector: 'app-question-template',
   templateUrl: './question-template.component.html',
@@ -9,7 +9,21 @@ export class QuestionTemplateComponent implements OnInit {
   questionType:string = '';
   questionIndex:number = 0;
   questionGrout: any = [{
-    id: '',
+    id: 'radio',
+    content: [{
+      title:"请选择一个选项",
+      radioGroup:[{
+        id: '',
+        name: '选项1'
+      },{
+        id: '',
+        name: '选项2'
+      }]
+    },{
+
+    }]
+  },{
+    id: 'multiple',
     content: [{
       
     },{

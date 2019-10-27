@@ -11,15 +11,17 @@ import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { QuestionTemplateComponent } from './my-project/createNewProject/question-template/question-template.component';
+import { RadionGropComponent } from './my-project/createNewProject/radion-grop/radion-grop.component';
 @NgModule({
-  declarations: [MyProjectComponent, AddProjectComponent, QuestionTemplateComponent],
+  declarations: [MyProjectComponent, AddProjectComponent, QuestionTemplateComponent, RadionGropComponent],
   imports: [
     CommonModule,
     NzTableModule,
     NzButtonModule,FormsModule,PublicModule,ManageProjectRoutingModule,
     NzStepsModule,NzPageHeaderModule,NzIconModule,
-    NzLayoutModule
+    NzLayoutModule,NzRadioModule
   ],
   entryComponents:[QuestionTemplateComponent]
 })
