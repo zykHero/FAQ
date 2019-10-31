@@ -18,6 +18,8 @@
         "operation": "操作",
         "createFAQ": "编辑项目",
         "publishFAQ": "发布项目",
-        "reportFAQ": "统计报表"
+        "reportFAQ": "统计报表",
+        "addRadio": "添加单个选项",
+        "addRadioMore": "批量添加选项"
     }
 }

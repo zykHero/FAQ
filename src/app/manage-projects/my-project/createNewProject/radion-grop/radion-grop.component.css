@@ -1,8 +1,12 @@
-
-.radioGroup {
-    display: flex;
+.radioTemplate{
+    padding: 18px;
+}
+.radioGroup,.optionsToolbar-btn{
     position: relative;
     left: 65px;
+}
+.radioGroup {
+    display: flex;
 }
 .radioOption{
     padding-left:45px;
@@ -39,7 +43,24 @@
 }
 .optionsToolbar{
     display: flex;
+    margin-top: 24px;
 }
 .optionsToolbar-btn{
     height: 30px;
+    color: #2672FF;
+    padding: 3px 8px;
+    margin-right: 16px;
+}
+.optionsToolbar-btn:hover{
+    cursor: pointer;
+    background-color: #f4f4f4;
+}
+.optionsToolbar-btn i {
+    font-size: 18px;
+    color: #2672FF;
+}
+.optionsToolbar-btn span {
+    position: relative;
+    bottom: 2px;
+    left: 5px;
 }

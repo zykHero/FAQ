@@ -17,7 +17,8 @@
         "operation":"Operation",
         "createFAQ":"EditProject",
         "publishFAQ":"PublishProject",
-        "reportFAQ":"CreateReport"
-
+        "reportFAQ":"CreateReport",
+        "addRadio": "添加单个选项",
+        "addRadioMore": "批量添加选项"
     }
 }
