@@ -1,0 +1,45 @@
+
+.radioGroup {
+    display: flex;
+    position: relative;
+    left: 65px;
+}
+.radioOption{
+    padding-left:45px;
+    border: 0;
+    width: 60%;
+    height: 35px;
+    background-color:#ffffff ;
+    outline: none;
+}
+
+.radioOption:hover{
+    border: 1px dashed;
+}
+
+.radioOption:focus{
+    background-color:#f4f4f4 ;
+}
+
+.radio-circle{
+    border: 1px solid;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    position: relative;
+    right: 58%;
+    top:10px;
+}
+.optionsToolbarIcon{
+    font-size: 18px;
+    line-height: 35px;
+}
+.optionsToolbarIcon:hover{
+    cursor: pointer;
+}
+.optionsToolbar{
+    display: flex;
+}
+.optionsToolbar-btn{
+    height: 30px;
+}

@@ -1,6 +1,20 @@
-<nz-radio-group [(ngModel)]="radioValue" nzName="radiogroup">
-    <label nz-radio nzValue="A">A</label>
-    <label nz-radio nzValue="B">B</label>
-    <label nz-radio nzValue="C">C</label>
-    <label nz-radio nzValue="D">D</label>
-</nz-radio-group>
+<ng-container *ngFor="let item of options;let i=index">
+    <div [id]="'radioOption_'+i" class="radioGroup"> 
+        <!-- 拖拽图标 -->
+        <div></div>
+        <!-- 选项部分 -->
+        <input class="radioOption" type="text" [placeholder]="item['label']" [(ngModel)]="item['value']">
+        <div class="radio-circle"></div>
+        <!-- 功能按钮 -->
+        <i class="optionsToolbarIcon" nz-icon nzType="minus-circle" nzTheme="outline"
+        (click)="removeOptions(i)"></i>
+    </div>    
+</ng-container>
+<div class="optionsToolbar">
+    <!-- 增加 -->
+    <div class="optionsToolbar-btn"></div>
+    <!-- 批量增加 -->
+    <div class="optionsToolbar-btn"></div>
+    <!-- 创建其他选项 -->
+    <div class="optionsToolbar-btn"> </div>
+</div>
