@@ -30,7 +30,9 @@
 }
 .question-toolbar-group {
     display: flex;
-    width: 25%;
+    width: 35%;
+    justify-content: flex-end;
+    padding-right: 10px;
 }
 
 .toolbar-icon {

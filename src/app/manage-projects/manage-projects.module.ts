@@ -14,8 +14,9 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { QuestionTemplateComponent } from './my-project/createNewProject/question-template/question-template.component';
 import { RadionGropComponent } from './my-project/createNewProject/radion-grop/radion-grop.component';
+import { BatchIncreaseComponent } from './my-project/createNewProject/batch-increase/batch-increase.component';
 @NgModule({
-  declarations: [MyProjectComponent, AddProjectComponent, QuestionTemplateComponent, RadionGropComponent],
+  declarations: [MyProjectComponent, AddProjectComponent, QuestionTemplateComponent, RadionGropComponent, BatchIncreaseComponent],
   imports: [
     CommonModule,
     NzTableModule,

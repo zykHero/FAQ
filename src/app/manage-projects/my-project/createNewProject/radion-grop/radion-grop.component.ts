@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import {BatchIncreaseComponent} from '../batch-increase/batch-increase.component'
 @Component({
   selector: 'app-radion-grop',
   templateUrl: './radion-grop.component.html',

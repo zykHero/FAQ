@@ -5,7 +5,9 @@
     "public":{
         "delete":"Delete",
         "publish":"Publish",
-        "add": "Add"
+        "add": "Add",
+        "btnOk": "OK",
+        "btnCancel": "Cancel"
     },
     "menu":{
         "myProject":"myProject"
