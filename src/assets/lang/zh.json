@@ -21,6 +21,7 @@
         "publishFAQ": "发布项目",
         "reportFAQ": "统计报表",
         "addRadio": "添加单个选项",
-        "addRadioMore": "批量添加选项"
+        "addRadioMore": "批量添加选项",
+        "addRadioMore_help": "每行代表一个选项，可以添加多个选项"
     }
 }

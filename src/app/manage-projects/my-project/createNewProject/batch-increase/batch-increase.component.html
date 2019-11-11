@@ -1,11 +1,12 @@
-<div class="batchIncrease">
-    <div>
-        <p></p>
+<div class="batchIncrease" *ngIf="isShow">
+    <div class="batchIncrease-content">
+        <div class="batchIncrease-title">批量添加选项</div>
+        <nz-alert nzType="info" [nzMessage]="infoHelp"></nz-alert>
+        <div class="batchIncrease-info"></div>
+        <textarea contenteditable=true (ngModelChange)="watchTextarea($event)" [ngModel]="batchIncreaseValue"></textarea>
     </div>
-    <div>
-        <button nz-button nzType="primary">{{'public.btnOk'|translate}}</button>
-        <button nz-button nzType="default">{{'public.btnCancel'|translate}}</button>
-        <!-- 保存 -->
-        <!-- 确定 -->
+    <div class="batchIncrease-fotter">
+        <button nz-button nzType="primary" [disabled]="isDisabledOKBtn" (click)="createRadiousGroup()">{{btnOK}}</button>
+        <button nz-button nzType="default" (click)="hiddenBatchIncreaseWin()">{{btnCancel}}</button>
     </div>
 </div>

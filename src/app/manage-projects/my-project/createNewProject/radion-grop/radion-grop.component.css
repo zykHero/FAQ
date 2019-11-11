@@ -44,6 +44,7 @@
 .optionsToolbar{
     display: flex;
     margin-top: 24px;
+    position: relative;
 }
 .optionsToolbar-btn{
     height: 30px;

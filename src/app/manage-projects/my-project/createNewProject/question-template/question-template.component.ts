@@ -37,7 +37,6 @@ export class QuestionTemplateComponent implements OnInit {
 
   showQusetionType(type, questionNBoxNum) {
     this.questionType = type;
-    this.questionIndex = questionNBoxNum
-    console.log(this.questionIndex)
+    this.questionIndex = questionNBoxNum;
   }
 }

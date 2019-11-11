@@ -12,6 +12,7 @@ export class RadionGropComponent implements OnInit {
   options: any = [];
   focusTemplate: boolean = true;
   defaultOptionsNum: number = 2;
+  showAddRadioMore: boolean = false;
   buttonsString: any = {
     addRadio: this.translate.instant('project.addRadio'),
     addRadioMore: this.translate.instant('project.addRadioMore')
@@ -38,6 +39,19 @@ export class RadionGropComponent implements OnInit {
     this.options = this.options.filter((ele, i) => {
       return i !== index;
     });
+  }
+
+  addRadioMore(){
+    this.showAddRadioMore = true;
+  }
+
+  //todo
+  getBathValue(value){
+    console.log(value)
+  }
+
+  getBathState(value){
+    this.showAddRadioMore = value;
   }
 
   private createDefaultOptions(optionsNum) {

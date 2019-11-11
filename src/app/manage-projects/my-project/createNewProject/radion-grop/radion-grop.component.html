@@ -20,14 +20,15 @@
             <span>{{buttonsString.addRadio}}</span>
         </div>
         <!-- 批量增加 -->
-        <div class="optionsToolbar-btn">
+        <div class="optionsToolbar-btn" (click)="addRadioMore()">
             <span>{{buttonsString.addRadioMore}}</span>
         </div>
+        <app-batch-increase [isShow]="showAddRadioMore" 
+        (batchValue)="getBathValue($event)"
+        (state)="getBathState($event)"></app-batch-increase>
         <!-- 创建其他选项 -->
         <div class="optionsToolbar-btn"> </div>
-        <template>
-            <app-batch-increase></app-batch-increase>
-        </template>
+         
     </div>
 </div>
 

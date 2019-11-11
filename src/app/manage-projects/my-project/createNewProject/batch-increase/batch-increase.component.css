@@ -1,0 +1,27 @@
+.batchIncrease{
+    position: absolute;
+    width: 500px;
+    top: 30px;
+    z-index: 99;
+    border-radius: 4px;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,.1);
+    padding: 0 24px;
+    background-color: #fff;
+}
+.batchIncrease-title{
+    margin: 15px 0;
+    font-size: 18px;
+    color: #484848;
+}
+
+.batchIncrease-content textarea{
+    margin: 15px 0;
+    width: 450px;
+    height: 150px;
+}
+.batchIncrease-fotter{
+    margin: 15px 0;
+}
+.batchIncrease-fotter button {
+    margin-right: 20px;
+}
