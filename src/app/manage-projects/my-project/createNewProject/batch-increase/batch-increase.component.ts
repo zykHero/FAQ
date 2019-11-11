@@ -20,7 +20,6 @@ export class BatchIncreaseComponent implements OnInit,OnChanges {
   constructor(public translate: TranslateService) { }
 
   ngOnChanges() {
-    console.log(this.isShow)
   }
 
   ngOnInit() {

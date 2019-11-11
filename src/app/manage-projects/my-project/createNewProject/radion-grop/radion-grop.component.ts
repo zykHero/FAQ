@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, Output,EventEmitter } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import {BatchIncreaseComponent} from '../batch-increase/batch-increase.component'
 @Component({
@@ -6,13 +6,16 @@ import {BatchIncreaseComponent} from '../batch-increase/batch-increase.component
   templateUrl: './radion-grop.component.html',
   styleUrls: ['./radion-grop.component.css']
 })
-export class RadionGropComponent implements OnInit {
-  @Input() index: any = 1;
+export class RadionGropComponent implements OnInit {  
+  @Output() radioData = new EventEmitter<any>();
   radioOptions: any = {};
   options: any = [];
+  radioIndex:any = 1;
   focusTemplate: boolean = true;
   defaultOptionsNum: number = 2;
   showAddRadioMore: boolean = false;
+  isShow:boolean = true;
+  index :any =new Date().getTime();//用于存放本次创建的radio的数据
   buttonsString: any = {
     addRadio: this.translate.instant('project.addRadio'),
     addRadioMore: this.translate.instant('project.addRadioMore')
@@ -54,6 +57,12 @@ export class RadionGropComponent implements OnInit {
     this.showAddRadioMore = value;
   }
 
+
+  closeRadioTemplate(){
+    this.isShow = false;
+    //TODO 删除此条数据
+  }
+
   private createDefaultOptions(optionsNum) {
     let temp: any = [];
     for (let i = 0; i < optionsNum; i++) {
@@ -64,4 +73,9 @@ export class RadionGropComponent implements OnInit {
     }
     this.options = [...this.options, ...temp];
   }
+
+  private getRadioData(){
+
+  }
+
 }

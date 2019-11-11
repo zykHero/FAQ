@@ -152,8 +152,7 @@ export class AddProjectComponent implements OnInit,OnDestroy {
   }
 
   onBack(){
-    this.router.navigate(['myProject'])
-    console.log('返回')
+    this.router.navigate(['myProject']);
   }
 
   changeMenu($event,id){
