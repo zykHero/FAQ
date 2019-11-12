@@ -17,7 +17,7 @@
                 <!-- <i nz-icon nzType="drag" nzTheme="outline"></i> -->
             </div>
             <!-- 选项部分 -->
-            <input class="radioOption" type="text" [placeholder]="item['label']" [(ngModel)]="item['value']">
+            <input class="radioOption" type="text" [placeholder]="item['placeholder']" [(ngModel)]="item['value']" (blur)="updataQuestionList()">
             <div class="radio-circle"></div>
             <!-- 功能按钮 -->
             <i class="optionsToolbarIcon" nz-icon nzType="minus-circle" nzTheme="outline"

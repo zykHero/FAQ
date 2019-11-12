@@ -33,6 +33,7 @@ export class BatchIncreaseComponent implements OnInit,OnChanges {
 
   createRadiousGroup() {
     this.batchValue.emit(this.batchIncreaseValue.split('\n'));
+    this.isShow = false;
   }
 
   hiddenBatchIncreaseWin() {
