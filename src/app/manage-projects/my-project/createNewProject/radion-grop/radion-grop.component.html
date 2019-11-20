@@ -20,8 +20,7 @@
             <input class="radioOption" type="text" [placeholder]="item['placeholder']" [(ngModel)]="item['value']" (blur)="updataQuestionList()">
             <div class="radio-circle"></div>
             <!-- 功能按钮 -->
-            <i class="optionsToolbarIcon" nz-icon nzType="minus-circle" nzTheme="outline"
-            (click)="removeOptions(i)"></i>
+            <i class="optionsToolbarIcon" nz-icon nzType="minus-circle" nzTheme="outline" (click)="removeOptions(i)"></i>
         </div>    
     </ng-container>
     <div class="optionsToolbar" *ngIf="focusTemplate">
@@ -34,7 +33,7 @@
         <div class="optionsToolbar-btn" (click)="addRadioMore()">
             <span>{{buttonsString.addRadioMore}}</span>
         </div>
-        <app-batch-increase [isShow]="showAddRadioMore" 
+        <app-batch-increase [isShow]="showAddRadioMore"
         (batchValue)="getBathValue($event)"
         (state)="getBathState($event)"></app-batch-increase>
         <!-- 创建其他选项 -->

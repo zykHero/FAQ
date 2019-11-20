@@ -1,14 +1,16 @@
-import { Component, OnInit, Input, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, Output, EventEmitter,ViewChild,HostListener } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BatchIncreaseComponent } from '../batch-increase/batch-increase.component'
+import { MyProjectService } from '../../my-project.service';
 @Component({
   selector: 'app-radion-grop',
   templateUrl: './radion-grop.component.html',
   styleUrls: ['./radion-grop.component.css']
 })
 export class RadionGropComponent implements OnInit {
-  @Input() questionList: any;
   @Output() radioData = new EventEmitter<any>();
+  @ViewChild('BatchIncreaseComponent',{static:false}) BatchIncreaseComponent :any;
+
   radioOptions: any = {};
   options: any = [];
   radioIndex: any = 1;
@@ -17,20 +19,23 @@ export class RadionGropComponent implements OnInit {
   showAddRadioMore: boolean = false;
   isShow: boolean = true;
   index: any = new Date().getTime();//用于存放本次创建的radio的数据
+  questionIndex: any =0
   buttonsString: any = {
     addRadio: this.translate.instant('project.addRadio'),
     addRadioMore: this.translate.instant('project.addRadioMore')
   };
-  constructor(private ele: ElementRef, public translate: TranslateService) { }
+  
+  constructor(private ele: ElementRef, public translate: TranslateService,public MyProjectService:MyProjectService) { }
 
   ngOnInit() {
     this.createDefaultOptions(2);
+    this.setQuestionIndex();
   }
 
   addOptions() {
     let tempArr = [{
       placeholder: `选项${this.options.length + 1}`,
-      value: ''
+      value: `选项${this.options.length + 1}`
     }];
     this.options = [...this.options, ...tempArr];
     this.radioData.emit({
@@ -68,6 +73,12 @@ export class RadionGropComponent implements OnInit {
       }
     });
     this.options = [...this.options, ...tempArr];
+    //判断是否有重复的值
+    let existValue = this.isExistData(this.options);
+    if (existValue != '') {
+      alert(`${existValue['value']}选项已存在，请修改。`);
+      return;
+    }
     this.radioData.emit({
       index: this.index,
       action: 'add',
@@ -80,18 +91,25 @@ export class RadionGropComponent implements OnInit {
     this.showAddRadioMore = value;
   }
 
-
   closeRadioTemplate() {
     this.isShow = false;
     //TODO 删除此条数据
   }
 
-  updataQuestionList(){
+  updataQuestionList() {
+    //为空值填入默认值
+    let temp = this.dealEmptyData(this.options);
+    //判断是否有重复的值
+    let existValue = this.isExistData(temp);
+    if (existValue != '') {
+      alert(`${existValue['value']}选项已存在，请修改。`);
+      return;
+    }
     this.radioData.emit({
       index: this.index,
       action: 'updata',
       type: 'radio',
-      data: this.options
+      data: temp
     });
   }
 
@@ -100,7 +118,7 @@ export class RadionGropComponent implements OnInit {
     for (let i = 0; i < optionsNum; i++) {
       temp.push({
         placeholder: `选项${i + 1}`,
-        value: ''
+        value: `选项${i + 1}`
       });
     }
     this.options = [...this.options, ...temp];
@@ -112,8 +130,42 @@ export class RadionGropComponent implements OnInit {
     });
   }
 
-  private getRadioData() {
 
+  private dealEmptyData(value) {
+    let temp = value.map(ele => {
+      if (ele['value'] === '') {
+        ele['value'] = ele['placeholder'];
+      }
+      return ele;
+    });
+    return temp;
+  }
+
+  private isExistData(value) {
+    if (!Array.isArray(value)) {
+      return '';
+    }
+    let res = '';
+    for(let i=0;i<value.length;i++){
+      let flag = 0;
+      for(let j=0;j<value.length;j++){
+        if (value[i]['value'] === value[j]['value']) {
+          flag++;
+        } 
+      }
+      if (flag > 1) {
+        res = value[i];
+        break;
+      }
+    }
+    return res;
+  }
+
+  private setQuestionIndex(){
+    this.questionIndex = this.MyProjectService.questionList.findIndex(ele=>{
+      return ele['index'] === this.index;
+    });
+    this.questionIndex = this.questionIndex+1;
   }
 
 }

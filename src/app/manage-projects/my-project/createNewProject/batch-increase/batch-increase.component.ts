@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class BatchIncreaseComponent implements OnInit,OnChanges {
   @Input('isShow') isShow: boolean;
-  
+
   @Output() batchValue = new EventEmitter<any>();
   @Output() state = new EventEmitter<any>();
 
@@ -23,7 +23,7 @@ export class BatchIncreaseComponent implements OnInit,OnChanges {
   }
 
   ngOnInit() {
-    
+   
   }
 
   watchTextarea(value) {
@@ -32,11 +32,24 @@ export class BatchIncreaseComponent implements OnInit,OnChanges {
   }
 
   createRadiousGroup() {
-    this.batchValue.emit(this.batchIncreaseValue.split('\n'));
+    let foramValueForArray = this.batchIncreaseValue.split('\n');
+    //处理空值
+    let foramValueForEmpty = this.dealEmptyData(foramValueForArray);
+    this.batchValue.emit(foramValueForEmpty);
     this.isShow = false;
+    this.state.emit(false);
   }
 
   hiddenBatchIncreaseWin() {
     this.isShow = false;
+    this.state.emit(false);
   }
+
+  private dealEmptyData(value) {
+    let temp = value.filter(ele => {
+      return ele != '';
+    });
+    return temp;
+  }
+
 }

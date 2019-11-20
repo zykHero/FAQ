@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RadionGropComponent } from '../radion-grop/radion-grop.component';
+import { MyProjectService } from '../../my-project.service';
+
 @Component({
   selector: 'app-question-template',
   templateUrl: './question-template.component.html',
@@ -7,20 +9,16 @@ import { RadionGropComponent } from '../radion-grop/radion-grop.component';
 })
 export class QuestionTemplateComponent implements OnInit {
   questionType: string = '';
-  questionIndex: number = 0;
-  questionList:any = [];
-  constructor() { }
+  constructor(public MyProjectService:MyProjectService) { }
 
   ngOnInit() {
   }
 
-  showQusetionType(type, questionNBoxNum) {
+  showQusetionType(type) {
     this.questionType = type;
-    this.questionIndex = questionNBoxNum;
   }
 
-  setQuestionList(value){
-    
+  setQuestionList(value){ 
     //判断action，如果是add,则从questionList增加，delete则从questionList中删除
     switch(value['action']){
       case 'add':
@@ -40,30 +38,20 @@ export class QuestionTemplateComponent implements OnInit {
       }
       default:break;
     }
-    console.log(value)
   }
   
   private addQuestion(value){
-    let tempData = this.dealEmptyValue(value);
-    let isExist = this.questionList.find(ele=>{
-      return ele['index'] === value['index'];
-    });
-    if (isExist){
-      alert('数据已存在');
-      return;
-    }
-    this.questionList.push(tempData);
+    this.MyProjectService.questionList.push(value);
   }
 
   private deleteQuestion(value){
-    this.questionList = this.questionList.filter(ele=>{
+    this.MyProjectService.questionList = this.MyProjectService.questionList.filter(ele=>{
       return ele['index'] !== value['index'];
     });
   }
 
   private updataQuestion(value){
-    let tempData = this.dealEmptyValue(value);
-    this.questionList = this.questionList.map(ele=>{
+    this.MyProjectService.questionList = this.MyProjectService.questionList.map(ele=>{
       if(ele['index']===value['index']){
         ele['data'] = value['data'];
       }
@@ -79,7 +67,8 @@ export class QuestionTemplateComponent implements OnInit {
       }
       return ele;
     });
-    return temp;
+    value['data'] = temp;
+    return value;
   }
 
   //获取当前模板上所有的题目

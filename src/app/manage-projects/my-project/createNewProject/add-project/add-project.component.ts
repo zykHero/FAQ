@@ -118,7 +118,6 @@ export class AddProjectComponent implements OnInit,OnDestroy {
     items:[{}]
   }];
   currentMenu:any= this.menu[0]['id'];
-  questionBoxNum:number=0;
   //目前需要创建组件视图，进行增、删、插入，所以使用ViewContainerRef
   @ViewChild('questionTemplate', { read: ViewContainerRef,static:false })
   questionTemplate:ViewContainerRef;
@@ -162,8 +161,7 @@ export class AddProjectComponent implements OnInit,OnDestroy {
   addTemplate(type){
     const factory = this.ComponentFactoryResolver.resolveComponentFactory(QuestionTemplateComponent);
     const componentRef = this.questionTemplate.createComponent(factory);
-    this.questionBoxNum++;
-    componentRef.instance.showQusetionType(type,this.questionBoxNum);
+    componentRef.instance.showQusetionType(type);
 
   }
 

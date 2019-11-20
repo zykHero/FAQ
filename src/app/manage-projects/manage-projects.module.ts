@@ -16,7 +16,7 @@ import { QuestionTemplateComponent } from './my-project/createNewProject/questio
 import { RadionGropComponent } from './my-project/createNewProject/radion-grop/radion-grop.component';
 import { BatchIncreaseComponent } from './my-project/createNewProject/batch-increase/batch-increase.component';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
-
+import { MyProjectService} from './my-project/my-project.service'
 @NgModule({
   declarations: [MyProjectComponent, AddProjectComponent, QuestionTemplateComponent, RadionGropComponent, BatchIncreaseComponent],
   imports: [
@@ -26,6 +26,7 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
     NzStepsModule, NzPageHeaderModule, NzIconModule,
     NzLayoutModule, NzRadioModule,NzAlertModule
   ],
+  providers:[MyProjectService],
   entryComponents: [QuestionTemplateComponent]
 })
 export class ManageProjectsModule { }
