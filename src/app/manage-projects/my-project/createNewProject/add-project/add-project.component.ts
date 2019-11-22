@@ -3,7 +3,7 @@ import { Component, OnInit,OnDestroy,ViewChild,ViewContainerRef,
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router'
 import { QuestionTemplateComponent } from '../question-template/question-template.component';
-
+import { MyProjectService } from '../../my-project.service';
 @Component({
   selector: 'app-add-project',
   templateUrl: './add-project.component.html',
@@ -124,7 +124,7 @@ export class AddProjectComponent implements OnInit,OnDestroy {
   componentRef: ComponentRef<QuestionTemplateComponent>;
   
   constructor(public translate: TranslateService,private router: Router,
-    private ComponentFactoryResolver: ComponentFactoryResolver) {
+    private ComponentFactoryResolver: ComponentFactoryResolver,public MyProjectService:MyProjectService) {
   
     }
 
@@ -138,11 +138,19 @@ export class AddProjectComponent implements OnInit,OnDestroy {
 
   pre() {
     this.current -= 1;
-    this.changeContent()
+    this.changeContent();
   }
 
   next(): void {
     this.current += 1;
+    if (this.current === 1) {
+      if (this.checkQuestionTitle() !== false){
+        alert (`第${this.checkQuestionTitle()}个题目的名称不能为空。`);
+        return;
+      }
+      //todo 第二页
+      console.log(this.MyProjectService.questionList);
+    }
     this.changeContent();
   }
 
@@ -167,6 +175,18 @@ export class AddProjectComponent implements OnInit,OnDestroy {
 
   private changeContent(){
 
+  }
+
+  // 检查问题的标题是否为空，若是为空，则不能下一步
+  private checkQuestionTitle(){
+    let emptyTitleIndex = this.MyProjectService.questionList.findIndex(ele=>{
+      return ele['title'] === '';
+    });
+    if (emptyTitleIndex > -1) {
+      return emptyTitleIndex+1;
+    }else{
+      return false;
+    }
   }
 
 }

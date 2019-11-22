@@ -41,7 +41,7 @@ export class QuestionTemplateComponent implements OnInit {
   }
   
   private addQuestion(value){
-    this.MyProjectService.questionList.push(value);
+    this.MyProjectService.questionList.push(value);  
   }
 
   private deleteQuestion(value){
@@ -53,7 +53,7 @@ export class QuestionTemplateComponent implements OnInit {
   private updataQuestion(value){
     this.MyProjectService.questionList = this.MyProjectService.questionList.map(ele=>{
       if(ele['index']===value['index']){
-        ele['data'] = value['data'];
+        ele = value;
       }
       return ele;
     });
@@ -69,15 +69,5 @@ export class QuestionTemplateComponent implements OnInit {
     });
     value['data'] = temp;
     return value;
-  }
-
-  //获取当前模板上所有的题目
-  private getQusetionList(){
-
-  }
-
-  //更新题目索引序号
-  private updataQuestionBoxNum(){
-
   }
 }

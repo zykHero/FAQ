@@ -1,7 +1,9 @@
-import { Component, OnInit, Input, ElementRef, Output, EventEmitter,ViewChild,HostListener } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, Output, EventEmitter, ViewChild, HostListener } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BatchIncreaseComponent } from '../batch-increase/batch-increase.component'
 import { MyProjectService } from '../../my-project.service';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-radion-grop',
   templateUrl: './radion-grop.component.html',
@@ -9,7 +11,7 @@ import { MyProjectService } from '../../my-project.service';
 })
 export class RadionGropComponent implements OnInit {
   @Output() radioData = new EventEmitter<any>();
-  @ViewChild('BatchIncreaseComponent',{static:false}) BatchIncreaseComponent :any;
+  @ViewChild('BatchIncreaseComponent', { static: false }) BatchIncreaseComponent: any;
 
   radioOptions: any = {};
   options: any = [];
@@ -19,13 +21,14 @@ export class RadionGropComponent implements OnInit {
   showAddRadioMore: boolean = false;
   isShow: boolean = true;
   index: any = new Date().getTime();//用于存放本次创建的radio的数据
-  questionIndex: any =0
+  questionIndex: any = 0
   buttonsString: any = {
     addRadio: this.translate.instant('project.addRadio'),
     addRadioMore: this.translate.instant('project.addRadioMore')
   };
-  
-  constructor(private ele: ElementRef, public translate: TranslateService,public MyProjectService:MyProjectService) { }
+  radioTitle: string = ''
+
+  constructor(private ele: ElementRef, public translate: TranslateService, public MyProjectService: MyProjectService) { }
 
   ngOnInit() {
     this.createDefaultOptions(2);
@@ -40,9 +43,10 @@ export class RadionGropComponent implements OnInit {
     this.options = [...this.options, ...tempArr];
     this.radioData.emit({
       index: this.index,
-      action: 'add',
+      action: 'updata',
       type: 'radio',
-      data: this.options
+      data: this.options,
+      title: this.radioTitle
     });
   }
 
@@ -57,7 +61,10 @@ export class RadionGropComponent implements OnInit {
 
     this.radioData.emit({
       index: this.index,
-      action: 'delete'
+      action: 'updata',
+      type: 'radio',
+      data: this.options,
+      title: this.radioTitle
     });
   }
 
@@ -81,9 +88,10 @@ export class RadionGropComponent implements OnInit {
     }
     this.radioData.emit({
       index: this.index,
-      action: 'add',
+      action: 'updata',
       type: 'radio',
-      data: this.options
+      data: this.options,
+      title: this.radioTitle
     });
   }
 
@@ -93,7 +101,11 @@ export class RadionGropComponent implements OnInit {
 
   closeRadioTemplate() {
     this.isShow = false;
-    //TODO 删除此条数据
+    this.radioData.emit({
+      action: "delete",
+      index: this.index
+    });
+    this.setQuestionIndex();
   }
 
   updataQuestionList() {
@@ -109,7 +121,18 @@ export class RadionGropComponent implements OnInit {
       index: this.index,
       action: 'updata',
       type: 'radio',
-      data: temp
+      data: temp,
+      title: this.radioTitle
+    });
+  }
+
+  updataTitle(){
+    this.radioData.emit({
+      index: this.index,
+      action: 'updata',
+      type: 'radio',
+      data: this.options,
+      title: this.radioTitle
     });
   }
 
@@ -126,7 +149,8 @@ export class RadionGropComponent implements OnInit {
       index: this.index,
       action: 'add',
       type: 'radio',
-      data: this.options
+      data: this.options,
+      title: this.radioTitle
     });
   }
 
@@ -146,12 +170,12 @@ export class RadionGropComponent implements OnInit {
       return '';
     }
     let res = '';
-    for(let i=0;i<value.length;i++){
+    for (let i = 0; i < value.length; i++) {
       let flag = 0;
-      for(let j=0;j<value.length;j++){
+      for (let j = 0; j < value.length; j++) {
         if (value[i]['value'] === value[j]['value']) {
           flag++;
-        } 
+        }
       }
       if (flag > 1) {
         res = value[i];
@@ -161,11 +185,11 @@ export class RadionGropComponent implements OnInit {
     return res;
   }
 
-  private setQuestionIndex(){
-    this.questionIndex = this.MyProjectService.questionList.findIndex(ele=>{
+  private setQuestionIndex() {
+    this.questionIndex = this.MyProjectService.questionList.findIndex(ele => {
       return ele['index'] === this.index;
     });
-    this.questionIndex = this.questionIndex+1;
+    this.questionIndex = this.questionIndex + 1;
   }
 
 }

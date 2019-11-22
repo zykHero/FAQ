@@ -1,7 +1,7 @@
 <div class="question-board" *ngIf="isShow">
     <div class="question-toolbar">
         <label>{{questionIndex}}</label>
-        <input [id]="questionIndex" type="text" autofocus="autofocus" placeholder="请输入单选题目">
+        <input [id]="questionIndex" type="text" autofocus="autofocus" placeholder="请输入单选题目" [(ngModel)]="radioTitle" (blur)="updataTitle()">
         <div class="question-toolbar-group">
             <!-- todo 长按拖动题目 -->
             <!-- todo 逻辑设置 -->

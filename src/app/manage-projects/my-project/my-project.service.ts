@@ -5,5 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class MyProjectService {
   questionList :any = [];//存放所有题目
+  
   constructor() { }
 }
