@@ -2,5 +2,5 @@
    <app-radion-grop (radioData)="setQuestionList($event)"></app-radion-grop>
 </div>
 <div class="question-board" *ngIf="questionType==='multiple'">
-   多选
+   <app-mutiple (mutipleData)="setQuestionList($event)"></app-mutiple>
 </div>

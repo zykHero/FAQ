@@ -22,11 +22,10 @@
     background-color:#f4f4f4 ;
 }
 
-.radio-circle{
+.mutiple-rect{
     border: 1px solid #aaa;
     width: 15px;
     height: 15px;
-    border-radius: 15px;
     position: relative;
     right: 58%;
     top:10px;

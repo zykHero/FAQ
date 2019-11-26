@@ -142,16 +142,14 @@ export class AddProjectComponent implements OnInit,OnDestroy {
   }
 
   next(): void {
-    this.current += 1;
-    if (this.current === 1) {
+    if (this.current === 0) {
       if (this.checkQuestionTitle() !== false){
         alert (`第${this.checkQuestionTitle()}个题目的名称不能为空。`);
         return;
       }
-      //todo 第二页
       console.log(this.MyProjectService.questionList);
     }
-    this.changeContent();
+    this.current += 1;
   }
 
   complete(): void {

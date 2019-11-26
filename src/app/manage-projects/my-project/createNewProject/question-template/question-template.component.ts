@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RadionGropComponent } from '../radion-grop/radion-grop.component';
+import { MutipleComponent } from '../mutiple/mutiple.component';
 import { MyProjectService } from '../../my-project.service';
 
 @Component({
