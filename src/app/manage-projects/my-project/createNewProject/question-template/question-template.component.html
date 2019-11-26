@@ -1,6 +1,6 @@
 <div *ngIf="questionType==='radio'">
    <app-radion-grop (radioData)="setQuestionList($event)"></app-radion-grop>
 </div>
-<div class="question-board" *ngIf="questionType==='multiple'">
+<div *ngIf="questionType==='multiple'">
    <app-mutiple (mutipleData)="setQuestionList($event)"></app-mutiple>
 </div>
