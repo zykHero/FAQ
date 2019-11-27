@@ -17,9 +17,10 @@ import { RadionGropComponent } from './my-project/createNewProject/radion-grop/r
 import { BatchIncreaseComponent } from './my-project/createNewProject/batch-increase/batch-increase.component';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { MyProjectService} from './my-project/my-project.service';
-import { MutipleComponent } from './my-project/createNewProject/mutiple/mutiple.component'
+import { MutipleComponent } from './my-project/createNewProject/mutiple/mutiple.component';
+import { ComboxsComponent } from './my-project/createNewProject/comboxs/comboxs.component'
 @NgModule({
-  declarations: [MyProjectComponent, AddProjectComponent, QuestionTemplateComponent, RadionGropComponent, BatchIncreaseComponent, MutipleComponent],
+  declarations: [MyProjectComponent, AddProjectComponent, QuestionTemplateComponent, RadionGropComponent, BatchIncreaseComponent, MutipleComponent, ComboxsComponent],
   imports: [
     CommonModule,
     NzTableModule,

@@ -1,0 +1,66 @@
+.comboxGroup,.optionsToolbar-btn{
+    position: relative;
+    left: 65px;
+}
+.comboxGroup {
+    display: flex;
+}
+.comboxOption{
+    padding-left:45px;
+    border: 0;
+    width: 60%;
+    height: 35px;
+    background-color:#ffffff ;
+    outline: none;
+}
+
+.comboxOption:hover{
+    border: 1px dashed;
+}
+
+.comboxOption:focus{
+    background-color:#f4f4f4 ;
+}
+
+.combox-triangle{ 
+    width: 0;
+    height: 0;
+    border-top:8px solid #aaa;
+    border-left:8px solid rgba(0,0,0,0);
+    border-right:8px solid rgba(0,0,0,0);
+    border-bottom:8px solid rgba(0,0,0,0);
+    position: relative;
+    right: 58%;
+    top:14px;
+}
+.optionsToolbarIcon{
+    font-size: 18px;
+    line-height: 35px;
+}
+.optionsToolbarIcon:hover{
+    cursor: pointer;
+}
+.optionsToolbar{
+    display: flex;
+    padding:24px 0;
+    position: relative;
+}
+.optionsToolbar-btn{
+    height: 30px;
+    color: #2672FF;
+    padding: 3px 8px;
+    margin-right: 16px;
+}
+.optionsToolbar-btn:hover{
+    cursor: pointer;
+    background-color: #f4f4f4;
+}
+.optionsToolbar-btn i {
+    font-size: 18px;
+    color: #2672FF;
+}
+.optionsToolbar-btn span {
+    position: relative;
+    bottom: 2px;
+    left: 5px;
+}

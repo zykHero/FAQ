@@ -1,0 +1,42 @@
+<div class="question-board" *ngIf="isShow">
+    <div class="question-toolbar">
+        <label>{{questionIndex}}</label>
+        <input [id]="questionIndex" type="text" autofocus="autofocus" placeholder="请选择一个选项" [(ngModel)]="title" (blur)="updataTitle()">
+        <div class="question-toolbar-group">
+            <!-- todo 长按拖动题目 -->
+            <!-- todo 逻辑设置 -->
+            <i class="toolbar-icon" nz-icon nzType="copy" nzTheme="fill"></i>
+            <i class="toolbar-icon" nz-icon nzType="close-circle" nzTheme="fill" (click)="closeTemplate($event)"></i>
+        </div>    
+    </div>
+    
+    <ng-container *ngFor="let item of options;let i=index">
+        <div [id]="'comboxOption_'+i" class="comboxGroup"> 
+            <!-- 拖拽图标 -->
+            <div>
+                <!-- <i nz-icon nzType="drag" nzTheme="outline"></i> -->
+            </div>
+            <!-- 选项部分 -->
+            <input class="comboxOption" type="text" [placeholder]="item['placeholder']" [(ngModel)]="item['value']" (blur)="updataQuestionList()">
+            <div class="combox-triangle"></div>
+            <!-- 功能按钮 -->
+            <i class="optionsToolbarIcon" nz-icon nzType="minus-circle" nzTheme="outline" (click)="removeOptions(i)"></i>
+        </div>    
+    </ng-container>
+    <div class="optionsToolbar" *ngIf="focusTemplate">
+        <!-- 增加 -->
+        <div class="optionsToolbar-btn" (click)="addOptions()">
+            <i nz-icon nzType="plus-circle" nzTheme="outline"></i>
+            <span>{{buttonsString.addRadio}}</span>
+        </div>
+        <!-- 批量增加 -->
+        <div class="optionsToolbar-btn" (click)="addRadioMore()">
+            <span>{{buttonsString.addRadioMore}}</span>
+        </div>
+        <app-batch-increase [isShow]="showAddRadioMore"
+        (batchValue)="getBathValue($event)"
+        (state)="getBathState($event)"></app-batch-increase>
+        <!-- 创建其他选项 -->
+        <div class="optionsToolbar-btn"> </div>        
+    </div>
+</div>

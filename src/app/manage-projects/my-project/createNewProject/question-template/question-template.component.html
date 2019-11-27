@@ -4,3 +4,6 @@
 <div *ngIf="questionType==='multiple'">
    <app-mutiple (mutipleData)="setQuestionList($event)"></app-mutiple>
 </div>
+<div *ngIf="questionType==='combox'">
+   <app-comboxs (comboxData)="setQuestionList($event)"></app-comboxs>
+</div>

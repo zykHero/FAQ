@@ -57,7 +57,7 @@ export class AddProjectComponent implements OnInit,OnDestroy {
         icon:'',
         title: '文字投票'
       },{
-        id: 'comboBox',
+        id: 'combox',
         icon:'',
         title: '下拉框'
       },{
