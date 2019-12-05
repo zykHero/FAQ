@@ -31,6 +31,8 @@ ul {
 .addProject_userInfo {
   display: flex;
   width: 15%;
+  justify-content: center;
+  align-items: center;
 }
 .addProject_backTo, .addProject_userInfo {
   line-height: 64px;

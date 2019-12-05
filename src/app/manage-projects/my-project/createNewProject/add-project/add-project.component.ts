@@ -168,7 +168,10 @@ export class AddProjectComponent implements OnInit,OnDestroy {
     const factory = this.ComponentFactoryResolver.resolveComponentFactory(QuestionTemplateComponent);
     const componentRef = this.questionTemplate.createComponent(factory);
     componentRef.instance.showQusetionType(type);
+  }
 
+  viewQuestionTemplate() {
+    this.router.navigate(['myProject/viewProject'])
   }
 
   private changeContent(){
