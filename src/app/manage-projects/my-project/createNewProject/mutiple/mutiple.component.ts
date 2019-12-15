@@ -27,6 +27,7 @@ export class MutipleComponent implements OnInit {
     addRadioMore: this.translate.instant('project.addRadioMore')
   };
   title: string = ''
+  questionList = this.MyProjectService.questionData.questionList;
 
   constructor(private ele: ElementRef, public translate: TranslateService, public MyProjectService: MyProjectService) { }
 
@@ -186,7 +187,7 @@ export class MutipleComponent implements OnInit {
   }
 
   private setQuestionIndex() {
-    this.questionIndex = this.MyProjectService.questionList.findIndex(ele => {
+    this.questionIndex = this.questionList.findIndex(ele => {
       return ele['index'] === this.index;
     });
     this.questionIndex = this.questionIndex + 1;

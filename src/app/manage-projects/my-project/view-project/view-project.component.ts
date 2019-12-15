@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
-
+import {MyProjectService} from '../my-project.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-view-project',
   templateUrl: './view-project.component.html',
@@ -8,9 +9,10 @@ import { Router } from '@angular/router'
 })
 export class ViewProjectComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(public translate:TranslateService, public router: Router,private MyProjectService:MyProjectService ) { }
 
   ngOnInit() {
+    console.log(this.MyProjectService.questionData)
   }
 
   closeView() {

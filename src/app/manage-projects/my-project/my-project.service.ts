@@ -4,7 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class MyProjectService {
-  questionList :any = [];//存放所有题目
+  questionData :any = {
+    title:{},
+    questionList:[]
+  };//存放所有题目
   
   constructor() { }
 }

@@ -5,9 +5,9 @@
         </div>  
         <div class="addProject_step">
             <nz-steps [nzCurrent]="current">
-                    <nz-step [nzTitle]="firstTitle"></nz-step>
-                    <nz-step [nzTitle]="secondTitle"></nz-step>
-                    <nz-step [nzTitle]="thirdTitle"></nz-step>
+                    <nz-step [nzTitle]="'project.createFAQ'|translate"></nz-step>
+                    <nz-step [nzTitle]="'project.publishFAQ'|translate"></nz-step>
+                    <nz-step [nzTitle]="'project.reportFAQ'|translate"></nz-step>
             </nz-steps>
         </div>
         <div class="addProject_userInfo">
@@ -45,10 +45,10 @@
                 <!-- 标题 -->
                 <div class="templateTitle">
                     <div class="mainTitle">
-                        <input [ngClass]="{'titleFocus':isTitleFocus}" placeholder="问卷标题">
+                        <input [ngClass]="{'titleFocus':isTitleFocus}" [placeholder]="'project.mainHeading'|translate" [(ngModel)]="mainHeading">
                     </div>
                     <div class="subheading">
-                        <input [ngClass]="{'titleFocus':isTitleFocus}" placeholder="感谢您能抽出几分钟时间来参加本次答题，现在我们就马上开始吧！">
+                        <input [ngClass]="{'titleFocus':isTitleFocus}" [placeholder]="'project.subHeading'|translate" [(ngModel)]="subHeading">
                     </div>
                 </div>
                 <!-- 题目区域 -->

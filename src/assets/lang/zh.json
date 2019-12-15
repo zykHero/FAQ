@@ -22,6 +22,9 @@
         "reportFAQ": "统计报表",
         "addRadio": "添加单个选项",
         "addRadioMore": "批量添加选项",
-        "addRadioMore_help": "每行代表一个选项，可以添加多个选项"
+        "addRadioMore_help": "每行代表一个选项，可以添加多个选项",
+        "mainHeading": "问卷标题",
+        "subHeading": "感谢您能抽出几分钟时间来参加本次答题，现在我们就马上开始吧！",
+        "viewInfo": "提示：当前为预览页面，答案不被记录。"
     }
 }

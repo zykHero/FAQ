@@ -19,7 +19,12 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { MyProjectService} from './my-project/my-project.service';
 import { MutipleComponent } from './my-project/createNewProject/mutiple/mutiple.component';
 import { ComboxsComponent } from './my-project/createNewProject/comboxs/comboxs.component';
-import { ViewProjectComponent } from './my-project/view-project/view-project.component'
+import { ViewProjectComponent } from './my-project/view-project/view-project.component';
+import { TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+import { ShareModuleModule } from '../common/share-module/share-module.module';
+
 @NgModule({
   declarations: [MyProjectComponent, AddProjectComponent, QuestionTemplateComponent, RadionGropComponent, BatchIncreaseComponent, MutipleComponent, ComboxsComponent, ViewProjectComponent],
   imports: [
@@ -27,7 +32,9 @@ import { ViewProjectComponent } from './my-project/view-project/view-project.com
     NzTableModule,
     NzButtonModule, FormsModule, PublicModule, ManageProjectRoutingModule,
     NzStepsModule, NzPageHeaderModule, NzIconModule,
-    NzLayoutModule, NzRadioModule,NzAlertModule
+    NzLayoutModule, NzRadioModule,NzAlertModule,
+    // ShareModuleModule,
+     TranslateModule.forChild()
   ],
   providers:[MyProjectService],
   entryComponents: [QuestionTemplateComponent]

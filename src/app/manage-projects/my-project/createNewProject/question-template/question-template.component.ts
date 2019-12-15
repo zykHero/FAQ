@@ -10,6 +10,8 @@ import { MyProjectService } from '../../my-project.service';
 })
 export class QuestionTemplateComponent implements OnInit {
   questionType: string = '';
+  questionList = this.MyProjectService.questionData.questionList;
+
   constructor(public MyProjectService:MyProjectService) { }
 
   ngOnInit() {
@@ -42,17 +44,17 @@ export class QuestionTemplateComponent implements OnInit {
   }
   
   private addQuestion(value){
-    this.MyProjectService.questionList.push(value);  
+    this.questionList.push(value);  
   }
 
   private deleteQuestion(value){
-    this.MyProjectService.questionList = this.MyProjectService.questionList.filter(ele=>{
+    this.questionList = this.questionList.filter(ele=>{
       return ele['index'] !== value['index'];
     });
   }
 
   private updataQuestion(value){
-    this.MyProjectService.questionList = this.MyProjectService.questionList.map(ele=>{
+    this.questionList = this.questionList.map(ele=>{
       if(ele['index']===value['index']){
         ele = value;
       }

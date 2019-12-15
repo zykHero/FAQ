@@ -11,6 +11,7 @@ import { TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ManageProjectsModule } from './manage-projects/manage-projects.module';
 import { PublicModule } from "./common/CommonModule";
+import { ShareModuleModule } from './common/share-module/share-module.module';
 
 export function createTranslateHttpLoader(http:HttpClient){
   return new TranslateHttpLoader(http,'../assets/lang/','.json');
@@ -26,6 +27,7 @@ export function createTranslateHttpLoader(http:HttpClient){
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    //ShareModuleModule.forRoot(),
     TranslateModule.forRoot({
       loader:{
         provide:TranslateLoader,

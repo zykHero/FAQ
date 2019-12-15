@@ -11,11 +11,15 @@ import { MyProjectService } from '../../my-project.service';
 })
 export class AddProjectComponent implements OnInit,OnDestroy {
   current = 0;
-  firstTitle: string = this.translate.instant('project.createFAQ');
-  secondTitle: string = this.translate.instant('project.publishFAQ');
-  thirdTitle: string = this.translate.instant('project.reportFAQ');
+  firstStepTitle: string = this.translate.instant('project.createFAQ');
+  secondStepTitle: string = this.translate.instant('project.publishFAQ');
+  thirdTStepitle: string = this.translate.instant('project.reportFAQ');
   projectName: string ='';
   isTitleFocus: boolean = false;
+  mainHeading: string = '';
+  subHeading: string = '';
+  questionData:any = this.MyProjectService.questionData;
+
   menu:any = [
     {
       id: 'questionType',
@@ -128,9 +132,7 @@ export class AddProjectComponent implements OnInit,OnDestroy {
   
     }
 
-  ngOnInit() {
-    console.log(this.firstTitle)
-  }
+  ngOnInit() {}
   
   ngOnDestroy(){
     console.log("离开")
@@ -147,7 +149,6 @@ export class AddProjectComponent implements OnInit,OnDestroy {
         alert (`第${this.checkQuestionTitle()}个题目的名称不能为空。`);
         return;
       }
-      console.log(this.MyProjectService.questionList);
     }
     this.current += 1;
   }
@@ -171,7 +172,10 @@ export class AddProjectComponent implements OnInit,OnDestroy {
   }
 
   viewQuestionTemplate() {
-    this.router.navigate(['myProject/viewProject'])
+    this.questionData.title['mainHeading'] = this.mainHeading ? this.mainHeading :this.translate.instant('project.mainHeading');
+    this.questionData.title['subHeading'] = this.subHeading ? this.subHeading :this.translate.instant('project.subHeading');
+    this.router.navigate(['myProject/viewProject']);
+
   }
 
   private changeContent(){
@@ -180,7 +184,7 @@ export class AddProjectComponent implements OnInit,OnDestroy {
 
   // 检查问题的标题是否为空，若是为空，则不能下一步
   private checkQuestionTitle(){
-    let emptyTitleIndex = this.MyProjectService.questionList.findIndex(ele=>{
+    let emptyTitleIndex = this.questionData.questionList.findIndex(ele=>{
       return ele['title'] === '';
     });
     if (emptyTitleIndex > -1) {
