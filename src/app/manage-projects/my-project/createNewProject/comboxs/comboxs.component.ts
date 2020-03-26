@@ -26,14 +26,14 @@ export class ComboxsComponent implements OnInit {
     addRadioMore: this.translate.instant('project.addRadioMore')
   };
   title: string = ''
-  questionList = this.MyProjectService.questionData.questionList;
 
 
   constructor(private ele: ElementRef, public translate: TranslateService, public MyProjectService: MyProjectService) { }
 
   ngOnInit() {
+    this.listenQuestionTemple();
     this.createDefaultOptions(2);
-    this.setQuestionIndex();
+    this.questionIndex = this.MyProjectService.getQuestionIndex(this.index);
   }
 
   addOptions() {
@@ -106,7 +106,7 @@ export class ComboxsComponent implements OnInit {
       action: "delete",
       index: this.index
     });
-    this.setQuestionIndex();
+    this.questionIndex = this.MyProjectService.getQuestionIndex(this.index);
   }
 
   updataQuestionList() {
@@ -135,6 +135,12 @@ export class ComboxsComponent implements OnInit {
       data: this.options,
       title: this.title
     });
+  }
+
+  private listenQuestionTemple() {
+    this.MyProjectService.questionTempleEmit$.subscribe(res=>{
+      this.questionIndex = this.MyProjectService.getQuestionIndex(this.index);
+    })
   }
 
   private createDefaultOptions(optionsNum) {
@@ -184,13 +190,6 @@ export class ComboxsComponent implements OnInit {
       }
     }
     return res;
-  }
-
-  private setQuestionIndex() {
-    this.questionIndex = this.questionList.findIndex(ele => {
-      return ele['index'] === this.index;
-    });
-    this.questionIndex = this.questionIndex + 1;
   }
 
 }

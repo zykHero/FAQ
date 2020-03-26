@@ -2,7 +2,7 @@
    <app-radion-grop (radioData)="setQuestionList($event)"></app-radion-grop>
 </div>
 <div *ngIf="questionType==='multiple'">
-   <app-mutiple (mutipleData)="setQuestionList($event)"></app-mutiple>
+   <app-mutiple [questionIndex]="questionIndex" (mutipleData)="setQuestionList($event)"></app-mutiple>
 </div>
 <div *ngIf="questionType==='combox'">
    <app-comboxs (comboxData)="setQuestionList($event)"></app-comboxs>

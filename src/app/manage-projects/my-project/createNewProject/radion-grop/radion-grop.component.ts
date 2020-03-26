@@ -15,25 +15,24 @@ export class RadionGropComponent implements OnInit {
 
   radioOptions: any = {};
   options: any = [];
-  radioIndex: any = 1;
   focusTemplate: boolean = true;
   defaultOptionsNum: number = 2;
   showAddRadioMore: boolean = false;
   isShow: boolean = true;
   index: any = new Date().getTime();//用于存放本次创建的radio的数据
-  questionIndex: any = 0
+  questionIndex: any = 0;
   buttonsString: any = {
     addRadio: this.translate.instant('project.addRadio'),
     addRadioMore: this.translate.instant('project.addRadioMore')
   };
   radioTitle: string = ''
-  questionList = this.MyProjectService.questionData.questionList;
 
   constructor(private ele: ElementRef, public translate: TranslateService, public MyProjectService: MyProjectService) { }
 
   ngOnInit() {
+    this.listenQuestionTemple();
     this.createDefaultOptions(2);
-    this.setQuestionIndex();
+    this.questionIndex = this.MyProjectService.getQuestionIndex(this.index); 
   }
 
   addOptions() {
@@ -106,7 +105,7 @@ export class RadionGropComponent implements OnInit {
       action: "delete",
       index: this.index
     });
-    this.setQuestionIndex();
+    this.questionIndex = this.MyProjectService.getQuestionIndex(this.index);
   }
 
   updataQuestionList() {
@@ -155,6 +154,11 @@ export class RadionGropComponent implements OnInit {
     });
   }
 
+  private listenQuestionTemple() {
+    this.MyProjectService.questionTempleEmit$.subscribe(res=>{
+      this.questionIndex = this.MyProjectService.getQuestionIndex(this.index);
+    })
+  }
 
   private dealEmptyData(value) {
     let temp = value.map(ele => {
@@ -184,13 +188,6 @@ export class RadionGropComponent implements OnInit {
       }
     }
     return res;
-  }
-
-  private setQuestionIndex() {
-    this.questionIndex = this.questionList.findIndex(ele => {
-      return ele['index'] === this.index;
-    });
-    this.questionIndex = this.questionIndex + 1;
   }
 
 }

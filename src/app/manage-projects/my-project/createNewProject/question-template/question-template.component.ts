@@ -10,9 +10,8 @@ import { MyProjectService } from '../../my-project.service';
 })
 export class QuestionTemplateComponent implements OnInit {
   questionType: string = '';
-  questionList = this.MyProjectService.questionData.questionList;
 
-  constructor(public MyProjectService:MyProjectService) { }
+  constructor(public MyProjectService: MyProjectService) { }
 
   ngOnInit() {
   }
@@ -21,51 +20,53 @@ export class QuestionTemplateComponent implements OnInit {
     this.questionType = type;
   }
 
-  setQuestionList(value){ 
+  setQuestionList(value) {
     //判断action，如果是add,则从questionList增加，delete则从questionList中删除
-    switch(value['action']){
+    switch (value['action']) {
       case 'add':
-      {
-        this.addQuestion(value);
-        break;
-      }
+        {
+          this.addQuestion(value);
+          break;
+        }
       case 'delete':
-      {
-        this.deleteQuestion(value);
-        break;
-      }
+        {
+          this.deleteQuestion(value);
+          break;
+        }
       case 'updata':
-      {
-        this.updataQuestion(value);
-        break;
-      }
-      default:break;
+        {
+          this.updataQuestion(value);
+          break;
+        }
+      default: break;
     }
-  }
-  
-  private addQuestion(value){
-    this.questionList.push(value);  
+    this.MyProjectService.emitUpdateQuestionIndex();
   }
 
-  private deleteQuestion(value){
-    this.questionList = this.questionList.filter(ele=>{
+  private addQuestion(value) {
+    this.MyProjectService.questionData.questionList.push(value);
+    console.log(this.MyProjectService.questionData.questionList)
+  }
+
+  private deleteQuestion(value) {
+    this.MyProjectService.questionData.questionList = this.MyProjectService.questionData.questionList.filter(ele => {
       return ele['index'] !== value['index'];
     });
   }
 
-  private updataQuestion(value){
-    this.questionList = this.questionList.map(ele=>{
-      if(ele['index']===value['index']){
+  private updataQuestion(value) {
+    this.MyProjectService.questionData.questionList = this.MyProjectService.questionData.questionList.map(ele => {
+      if (ele['index'] === value['index']) {
         ele = value;
       }
       return ele;
     });
   }
-  
+
   //格式化data中没有value值的，等于默认值
-  private dealEmptyValue(value){  
-    let temp = value.data.map(ele=>{
-      if (ele['value']===''){
+  private dealEmptyValue(value) {
+    let temp = value.data.map(ele => {
+      if (ele['value'] === '') {
         ele['value'] = ele['placeholder']
       }
       return ele;
@@ -73,4 +74,11 @@ export class QuestionTemplateComponent implements OnInit {
     value['data'] = temp;
     return value;
   }
+
+  // private setQuestionIndex() {
+  //   this.questionIndex = this.MyProjectService.questionData.questionList.findIndex(ele => {
+  //     return ele['index'] === this.index;
+  //   });
+  //   this.questionIndex = this.questionIndex + 1;
+  // }
 }

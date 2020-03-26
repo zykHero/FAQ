@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./mutiple.component.css']
 })
 export class MutipleComponent implements OnInit {
+  @Input('questionIndex') questionIndex;
   @Output() mutipleData = new EventEmitter();
   @ViewChild('BatchIncreaseComponent', { static: false }) BatchIncreaseComponent: any;
 
@@ -21,19 +22,19 @@ export class MutipleComponent implements OnInit {
   showAddRadioMore: boolean = false;
   isShow: boolean = true;
   index: any = new Date().getTime();//用于存放本次创建的radio的数据
-  questionIndex: any = 0
+  //questionIndex: any = 0
   buttonsString: any = {
     addRadio: this.translate.instant('project.addRadio'),
     addRadioMore: this.translate.instant('project.addRadioMore')
   };
   title: string = ''
-  questionList = this.MyProjectService.questionData.questionList;
 
   constructor(private ele: ElementRef, public translate: TranslateService, public MyProjectService: MyProjectService) { }
 
   ngOnInit() {
+    this.listenQuestionTemple();
     this.createDefaultOptions(2);
-    this.setQuestionIndex();
+    this.questionIndex = this.MyProjectService.getQuestionIndex(this.index);   
   }
 
   addOptions() {
@@ -106,7 +107,7 @@ export class MutipleComponent implements OnInit {
       action: "delete",
       index: this.index
     });
-    this.setQuestionIndex();
+    this.questionIndex = this.MyProjectService.getQuestionIndex(this.index);
   }
 
   updataQuestionList() {
@@ -135,6 +136,12 @@ export class MutipleComponent implements OnInit {
       data: this.options,
       title: this.title
     });
+  }
+
+  private listenQuestionTemple() {
+    this.MyProjectService.questionTempleEmit$.subscribe(res=>{
+      this.questionIndex = this.MyProjectService.getQuestionIndex(this.index);   
+    })
   }
 
   private createDefaultOptions(optionsNum) {
@@ -185,13 +192,5 @@ export class MutipleComponent implements OnInit {
     }
     return res;
   }
-
-  private setQuestionIndex() {
-    this.questionIndex = this.questionList.findIndex(ele => {
-      return ele['index'] === this.index;
-    });
-    this.questionIndex = this.questionIndex + 1;
-  }
-
 
 }
