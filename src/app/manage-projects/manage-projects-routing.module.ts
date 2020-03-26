@@ -13,9 +13,6 @@ const routes: Routes = [
     },{
       path:'createProject',
       component:AddProjectComponent                      
-    },{
-      path: 'viewProject',
-      component: ViewProjectComponent
     }]
   }
   ,{

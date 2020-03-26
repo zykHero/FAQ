@@ -15,11 +15,11 @@ export class AddProjectComponent implements OnInit,OnDestroy {
   secondStepTitle: string = this.translate.instant('project.publishFAQ');
   thirdTStepitle: string = this.translate.instant('project.reportFAQ');
   projectName: string ='';
-  isTitleFocus: boolean = false;
   mainHeading: string = '';
   subHeading: string = '';
   questionData:any = this.MyProjectService.questionData;
-
+  isTitleFocus: boolean = false;
+  isShowViewProject:boolean = false;
   menu:any = [
     {
       id: 'questionType',
@@ -174,8 +174,14 @@ export class AddProjectComponent implements OnInit,OnDestroy {
   viewQuestionTemplate() {
     this.questionData.title['mainHeading'] = this.mainHeading ? this.mainHeading :this.translate.instant('project.mainHeading');
     this.questionData.title['subHeading'] = this.subHeading ? this.subHeading :this.translate.instant('project.subHeading');
-    this.router.navigate(['myProject/viewProject']);
+    //若是题目的标题为空，则使用默认题目进行填充
+    this.setDefaultTitle();
+    this.isShowViewProject = true;
 
+  }
+
+  listenCloseViewProject() {
+    this.isShowViewProject = false;
   }
 
   private changeContent(){
@@ -191,6 +197,17 @@ export class AddProjectComponent implements OnInit,OnDestroy {
       return emptyTitleIndex+1;
     }else{
       return false;
+    }
+  }
+
+  private setDefaultTitle() {
+    let temp = JSON.parse(JSON.stringify(this.questionData));
+    if (temp.questionList.length > 0) {
+      let res = temp.questionList.map(ele=>{
+        ele.title = ele.title === '' ? ele.defaultTitle : ele.title;
+        return ele;
+      });
+      this.questionData.questionList = res;
     }
   }
 

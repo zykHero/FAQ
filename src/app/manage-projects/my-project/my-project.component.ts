@@ -30,13 +30,11 @@ export class MyProjectComponent implements OnInit {
     
   }
 
-  ngOnInit() {
-    
+  ngOnInit() {  
     setTimeout(()=>{
       this.createGridToolbar();
       this.createGridColumns();
-    })
-   
+    })  
     this.getGridData();   
   }
   startEdit(rowIndex:Number,event: MouseEvent): void {

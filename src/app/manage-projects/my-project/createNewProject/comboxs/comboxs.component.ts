@@ -157,7 +157,8 @@ export class ComboxsComponent implements OnInit {
       action: 'add',
       type: 'combox',
       data: this.options,
-      title: this.title
+      title: this.title,
+      defaultTitle: '请选择一个选项'
     });
   }
 

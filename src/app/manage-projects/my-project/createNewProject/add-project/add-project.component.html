@@ -15,6 +15,7 @@
         </div>
     </div>
     <div class="addProject_body">
+        
         <div class="addProject_menu">
             <ul *ngFor="let item of menu">
                 <li (click)="changeMenu($event,item['id'])">{{item['title']}}</li>
@@ -68,5 +69,6 @@
             </div>
         </div>
         <!-- 外观 -->
+        <app-view-project *ngIf="isShowViewProject" (closeViewProject)="listenCloseViewProject()"></app-view-project>       
     </div>   
 </div>

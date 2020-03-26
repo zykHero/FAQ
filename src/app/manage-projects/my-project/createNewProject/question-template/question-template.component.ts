@@ -45,7 +45,6 @@ export class QuestionTemplateComponent implements OnInit {
 
   private addQuestion(value) {
     this.MyProjectService.questionData.questionList.push(value);
-    console.log(this.MyProjectService.questionData.questionList)
   }
 
   private deleteQuestion(value) {
@@ -57,7 +56,7 @@ export class QuestionTemplateComponent implements OnInit {
   private updataQuestion(value) {
     this.MyProjectService.questionData.questionList = this.MyProjectService.questionData.questionList.map(ele => {
       if (ele['index'] === value['index']) {
-        ele = value;
+        ele = Object.assign(ele,value);
       }
       return ele;
     });

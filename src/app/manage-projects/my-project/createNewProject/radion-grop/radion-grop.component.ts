@@ -150,7 +150,8 @@ export class RadionGropComponent implements OnInit {
       action: 'add',
       type: 'radio',
       data: this.options,
-      title: this.radioTitle
+      title: this.radioTitle,
+      defaultTitle: '请输入单选题目'
     });
   }
 
@@ -161,6 +162,7 @@ export class RadionGropComponent implements OnInit {
   }
 
   private dealEmptyData(value) {
+    console.log(value)
     let temp = value.map(ele => {
       if (ele['value'] === '') {
         ele['value'] = ele['placeholder'];

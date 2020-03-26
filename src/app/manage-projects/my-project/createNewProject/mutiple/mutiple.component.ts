@@ -158,7 +158,8 @@ export class MutipleComponent implements OnInit {
       action: 'add',
       type: 'multiple',
       data: this.options,
-      title: this.title
+      title: this.title,
+      defaultTitle: '请选择以下选项 (多选)'
     });
   }
 
