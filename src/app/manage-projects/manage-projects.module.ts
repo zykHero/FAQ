@@ -25,6 +25,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 import { ShareModuleModule } from '../common/share-module/share-module.module';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @NgModule({
   declarations: [MyProjectComponent, AddProjectComponent, QuestionTemplateComponent, RadionGropComponent, BatchIncreaseComponent, MutipleComponent, ComboxsComponent, ViewProjectComponent],
@@ -33,7 +34,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
     NzTableModule,
     NzButtonModule, FormsModule, PublicModule, ManageProjectRoutingModule,
     NzStepsModule, NzPageHeaderModule, NzIconModule,
-    NzLayoutModule, NzRadioModule,NzAlertModule,NzCheckboxModule,
+    NzLayoutModule, NzRadioModule,NzAlertModule,NzCheckboxModule,NzSelectModule,
     // ShareModuleModule,
      TranslateModule.forChild()
   ],

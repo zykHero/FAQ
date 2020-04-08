@@ -29,8 +29,12 @@
                                 <ng-container *ngFor="let ele of item.data">
                                     <label nz-checkbox>{{ele.value}}</label>
                                     <br>
-                                </ng-container>
-                                
+                                </ng-container>               
+                            </div>
+                            <div *ngSwitchCase="'combox'">
+                                <nz-select nzMode="multiple" style="width: 400px">
+                                    <nz-option *ngFor="let ele of item.data" [nzLabel]="ele.value" [nzValue]="ele.value"></nz-option>
+                                </nz-select>
                             </div>
                         </ng-container>
                     </li>
