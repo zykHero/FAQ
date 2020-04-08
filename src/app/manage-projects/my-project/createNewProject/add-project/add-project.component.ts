@@ -201,7 +201,8 @@ export class AddProjectComponent implements OnInit,OnDestroy {
   }
 
   private setDefaultTitle() {
-    let temp = JSON.parse(JSON.stringify(this.questionData));
+    let temp = JSON.parse(JSON.stringify(this.questionData
+    ));
     if (temp.questionList.length > 0) {
       let res = temp.questionList.map(ele=>{
         ele.title = ele.title === '' ? ele.defaultTitle : ele.title;

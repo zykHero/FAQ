@@ -40,3 +40,15 @@
     line-height: 64px;
     text-align: center;
   }
+
+  .viewProject-body {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .viewProject-body-questionTemplate{
+    width: 60%;
+    background-color: #fff;
+    margin-top: 16px;
+  }

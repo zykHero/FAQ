@@ -6,6 +6,37 @@
         </div>
         <p class="viewProject-infoText">{{'project.viewInfo' | translate}}</p>
     </div>
-    
+    <div class="viewProject-body">
+        <div class="viewProject-body-questionTemplate">
+            <div class="first-title">{{mainTitle}}</div>
+            <div class="second-title">{{subTitle}}</div>
+            <div class="content">
+                <ul>
+                    <li *ngFor="let item of questionViewList;let i=index">
+                        <div class="questionTitle">
+                            <span>{{item.index}}</span>{{item.title}}
+                        </div>
+                        <ng-container [ngSwitch]="item.type">
+                            <div *ngSwitchCase="'radio'">  
+                                <nz-radio-group>
+                                    <ng-container *ngFor="let ele of item.data">
+                                        <label nz-radio [nzValue]="ele.value">{{ele.value}}</label>
+                                        <br>
+                                    </ng-container>
+                                </nz-radio-group>
+                            </div>
+                            <div *ngSwitchCase="'multiple'">
+                                <ng-container *ngFor="let ele of item.data">
+                                    <label nz-checkbox>{{ele.value}}</label>
+                                    <br>
+                                </ng-container>
+                                
+                            </div>
+                        </ng-container>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
